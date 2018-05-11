@@ -1,0 +1,8 @@
+---
+# vars file for nodejs
+nodejs_ndenv_dir: ~/.ndenv
+nodejs_node_version: v10.11.0
+nodejs_npm_packages:
+  - name: ionic
+  - name: cordova
+#  - name: ios-deploy

@@ -1,0 +1,85 @@
+---
+# tasks file for homebrew-cask
+# http://docs.ansible.com/ansible/latest/modules/homebrew_cask_module.html
+
+- block:
+  - block:
+    - name: tap homebrew cask
+      homebrew_tap:
+        name: '{{ item }}'
+        state: present
+      with_items: '{{ homebrew_cask_taps | default([]) }}'
+
+    - name: untap unofficial homebrew cask
+      homebrew_tap:
+        name: '{{ item }}'
+        state: absent
+      with_items: '{{ homebrew_cask_unofficial_taps | default([]) }}'
+
+    - name: install homebrew cask packages
+      homebrew_cask: name="{{ item.name }}" state=present
+      environment:
+        HOMEBREW_CASK_OPTS: "--appdir=/Applications"
+      # install_options: 'appdir=/Applications'
+      with_items: '{{ homebrew_cask_packages | default([]) }}'
+
+    - name: update brew list
+      shell: brew list > brewlist.txt
+      changed_when: false
+
+    - name: update brew cask list
+      shell: brew cask list > casklist.txt
+      changed_when: false
+
+    tags:
+      - homebrew-cask-official
+
+  - block:
+    - name: tap unofficial homebrew cask
+      homebrew_tap:
+        name: '{{ item }}'
+        state: present
+      changed_when: false
+      with_items: '{{ homebrew_cask_unofficial_taps | default([]) }}'
+
+    - name: install homebrew cask unofficial packages
+      homebrew_cask: name="{{ item.name }}" state=present
+      environment:
+        HOMEBREW_CASK_OPTS: "--appdir=/Applications"
+      # install_options: 'appdir=/Applications'
+      with_items: '{{ homebrew_cask_unofficial_packages | default([]) }}'
+
+    - name: update brew list
+      shell: brew list > brewlist.txt
+      changed_when: false
+
+    - name: update brew cask list
+      shell: brew cask list > casklist.txt
+      changed_when: false
+
+    - name: untap unofficial homebrew cask
+      homebrew_tap:
+        name: '{{ item }}'
+        state: absent
+      changed_when: false
+      with_items: '{{ homebrew_cask_unofficial_taps | default([]) }}'
+
+    tags:
+      - homebrew-cask-unofficial
+
+  - block:
+    - name: install homebrew after cask packages
+      homebrew:
+        name: '{{ item.name }}'
+        state: '{{ item.state | default("present") }}'
+      with_items: '{{ homebrew_after_cask_packages | default([]) }}'
+
+    - name: update brew list
+      shell: brew list > brewlist.txt
+      changed_when: false
+
+    tags:
+      - homebrew-after-cask
+
+  tags:
+    - homebrew-cask

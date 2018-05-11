@@ -1,0 +1,65 @@
+---
+# tasks file for dotfiles
+- block:
+  - name: clone dotfiles
+    git:
+      repo: git@github.com:sfus/dotfiles.git
+      dest: '{{ dotfiles_dir }}'
+
+  - name: install oh-my-zsh
+    shell: "curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh"
+    args:
+      creates: ~/.oh-my-zsh
+
+  - name: clone tmux-powerline
+    git:
+      repo: git://github.com/erikw/tmux-powerline.git
+      dest: ~/.tmux-powerline
+
+  - name: create symbolic links to dotfiles
+    command: "{{ dotfiles_dir }}/create_symlink.sh"
+    changed_when: false
+
+  tags:
+    - dotfiles
+
+- block:
+  - name: clone dotfiles-private
+    git:
+      repo: git@github.com:sfus/dotfiles-private.git
+      dest: '{{ dotfiles_private_dir }}'
+
+  - name: create symbolic links to dotfiles-private
+    command: "{{ dotfiles_private_dir }}/create_symlink.sh"
+    changed_when: false
+
+  tags:
+    - dotfiles-private
+
+- block:
+  - name: clone custom el-get packages
+    git:
+      repo: "git@github.com:sfus/{{ item.name }}.git"
+      dest: '{{ dotfiles_parent_dir }}/{{ item.name }}'
+    with_items: '{{ dotfiles_el_get_custom_packages | default([]) }}'
+
+  - name: create directory for custom el-get packages
+    file:
+      path: '{{ dotfiles_el_get_dir }}'
+      state: directory
+
+  - name: delete directory or link to custom el-get packages
+    file:
+      path: '{{ dotfiles_el_get_dir }}/{{ item.dest }}'
+      state: absent
+    with_items: '{{ dotfiles_el_get_custom_packages | default([]) }}'
+
+  - name: create symbolic links to custom el-get packages
+    file:
+      src: '{{ dotfiles_parent_dir }}/{{ item.name }}'
+      dest: '{{ dotfiles_el_get_dir }}/{{ item.dest }}'
+      state: link
+    with_items: '{{ dotfiles_el_get_custom_packages | default([]) }}'
+
+  tags:
+    - dotfiles-el

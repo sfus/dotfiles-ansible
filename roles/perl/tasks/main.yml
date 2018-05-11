@@ -1,0 +1,52 @@
+---
+# tasks file for perl
+- block:
+
+  - name: check plenv
+    stat:
+      path: "{{ perl_plenv_dir }}"
+    register: dir_stat
+
+  - name: install plenv
+    git:
+      repo: https://github.com/tokuhirom/plenv.git
+      dest: "{{ perl_plenv_dir }}"
+    when: dir_stat.stat.isdir is not defined and not ansible_check_mode
+
+  - name: install perl-build
+    git:
+      repo: https://github.com/tokuhirom/Perl-Build.git
+      dest: "{{ perl_plenv_dir }}/plugins/perl-build"
+    when: dir_stat.stat.isdir is not defined and not ansible_check_mode
+
+  - name: check plenv version
+    shell: "{{ perl_plenv_dir }}/bin/plenv versions | grep {{ perl_version }} > /dev/null; echo $?"
+    register: plenv_check_install
+    changed_when: plenv_check_install.stdout != '0'
+
+  - name: install perl
+    shell: "{{ perl_plenv_dir }}/bin/plenv install {{ perl_version }}"
+    when: plenv_check_install.stdout != '0'
+
+  - name: plenv rehash
+    shell: "{{ perl_plenv_dir }}/bin/plenv rehash {{ perl_version }}"
+    when: plenv_check_install.stdout != '0'
+
+  - name: check perl version
+    shell: "{{ perl_plenv_dir }}/bin/plenv version | grep {{ perl_version }} > /dev/null; echo $?"
+    register: plenv_check_default
+    changed_when: plenv_check_default.stdout != '0'
+
+  - name: set default perl version
+    shell: "{{ perl_plenv_dir }}/bin/plenv global {{ perl_version }}"
+    when: plenv_check_default.stdout != '0'
+
+  - name: install cpanm
+    shell: "{{ perl_plenv_dir }}/bin/plenv install-cpanm"
+    when: plenv_check_default.stdout != '0'
+
+  - name: install carton
+    shell: "{{ perl_plenv_dir }}/shims/cpanm Carton"
+    when: plenv_check_default.stdout != '0'
+
+  tags: perl

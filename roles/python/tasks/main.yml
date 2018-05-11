@@ -1,0 +1,74 @@
+---
+# tasks file for python
+- block:
+  - block:
+    - name: check pyenv
+      stat:
+        path: "{{ python_pyenv_dir }}"
+      register: dir_stat
+
+    - name: install pybenv
+      git:
+        repo: https://github.com/yyuu/pyenv.git
+        dest: "{{ python_pyenv_dir }}"
+      when: dir_stat.stat.isdir is not defined and not ansible_check_mode
+
+    - name: install virtual-env
+      git:
+        repo: https://github.com/yyuu/pyenv-virtualenv.git
+        dest: "{{ python_pyenv_dir }}/plugins/pyenv-virtualenv"
+      when: dir_stat.stat.isdir is not defined and not ansible_check_mode
+
+    - name: create virtualenv symlink
+      file:
+        src: "{{ python_pyenv_dir }}/plugins/pyenv-virtualenv/bin/pyenv-virtualenv"
+        dest: "{{ python_pyenv_dir }}/bin/virtualenv"
+        state: link
+    tags: python-install-pyenv
+
+  - block:
+    - name: check python3 version
+      shell: "{{ python_pyenv_dir}}/bin/pyenv versions | grep {{ python_python3_version }} > /dev/null; echo $?"
+      register: pyenv_check_install
+      changed_when: pyenv_check_install.stdout != '0'
+
+    - name: install python3
+      shell: "{{ python_pyenv_dir}}/bin/pyenv install -v {{ python_python3_version }}"
+      when: pyenv_check_install.stdout != '0'
+    tags: python-install-python3
+
+  - block:
+    - name: check python2 version
+      shell: "{{ python_pyenv_dir}}/bin/pyenv versions | grep {{ python_python2_version }} > /dev/null; echo $?"
+      register: pyenv_check_install_v2
+      changed_when: pyenv_check_install_v2.stdout != '0'
+
+    - name: install python2
+      shell: "{{ python_pyenv_dir}}/bin/pyenv install -v {{ python_python2_version }}"
+      when: pyenv_check_install_v2.stdout != '0'
+    tags: python-install-python2
+
+  - block:
+    - name: pyenv rehash python3
+      shell: "{{ python_pyenv_dir}}/bin/pyenv rehash {{ python_python3_version }}"
+      when: pyenv_check_install.stdout != '0'
+
+    - name: check python3 version
+      shell: "{{ python_pyenv_dir}}/bin/pyenv version | grep {{ python_python3_version }} > /dev/null; echo $?"
+      register: pyenv_check_default
+      changed_when: pyenv_check_default.stdout != '0'
+
+    - name: set pyenv global
+      shell: "{{ python_pyenv_dir}}/bin/pyenv global {{ python_python3_version }} {{ python_python2_version }}"
+      when: pyenv_check_default.stdout != '0'
+    tags: python-enable-python
+
+  - block:
+    - name: install pip packages
+      command: "pip install {{ item.name }}"
+      register: pip_output
+      changed_when: '"Requirement already satisfied" not in pip_output.stdout'
+      with_items: '{{ pip_packages | default([]) }}'
+    tags: python-pip-install
+
+  tags: python

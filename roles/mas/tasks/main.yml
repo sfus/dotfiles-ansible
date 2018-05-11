@@ -1,0 +1,30 @@
+---
+# tasks file for mas
+# https://techte.co/2018/01/22/ansible-mac/#roles-mas
+# $ mas search XXXXXX
+
+- block:
+
+  - name: mas is installed
+    command: "brew list"
+    register: mas_brew_list
+    changed_when: false
+    check_mode: no
+
+  - block:
+
+    - name: mas get installed list
+      command: "mas list"
+      register: mas_installed_list
+      changed_when: false
+      check_mode: no
+
+    - name: mas install items
+      command: "mas install {{ item.id }}"
+      when: "(item.id | string) not in mas_installed_list.stdout"
+      with_items: "{{ packages }}"
+
+    when: '"mas" in mas_brew_list.stdout_lines'
+
+  tags:
+    - mas

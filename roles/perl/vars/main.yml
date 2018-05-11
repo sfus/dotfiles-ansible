@@ -1,0 +1,4 @@
+---
+# vars file for perl
+perl_plenv_dir: ~/.plenv
+perl_version: 5.28.0

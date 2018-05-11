@@ -1,0 +1,56 @@
+---
+# tasks file for homebrew
+- block:
+  - block:
+    - name: update homebrew
+      homebrew:
+        update_homebrew: yes
+
+    - name: tap homebrew
+      homebrew_tap:
+        name: '{{ item }}'
+        state: present
+      with_items: '{{ homebrew_taps | default([]) }}'
+    tags: homebrew-update-and-tap
+
+  - block:
+    - name: install homebrew my packages
+      homebrew:
+        name: '{{ item.name }}'
+        state: '{{ item.state | default("present") }}'
+      with_items: '{{ homebrew_my_packages | default([]) }}'
+    tags: homebrew-install-mine
+
+  - block:
+    - name: install homebrew packages
+      homebrew:
+        name: '{{ item.name }}'
+        state: '{{ item.state | default("present") }}'
+        install_options: '{{ item.install_options | default([]) }}'
+      with_items: '{{ homebrew_packages | default([]) }}'
+    tags: homebrew-install
+
+  - block:
+    - name: install homebrew other packages
+      homebrew:
+        name: '{{ item.name }}'
+        state: '{{ item.state | default("present") }}'
+      with_items: '{{ homebrew_other_packages | default([]) }}'
+    tags: homebrew-install-others
+
+  - block:
+    - name: check gtags (GNU global) for pygments
+      shell: gtags --debug 2> /dev/null
+      register: homebrew_check_gtags
+      failed_when: homebrew_check_gtags.rc != 0
+      changed_when: false
+    tags: homebrew-check-gtags
+
+  - block:
+    - name: update brew list
+      shell: brew list > brewlist.txt
+      changed_when: false
+    tags: homebrew-diff
+
+  tags:
+    - homebrew

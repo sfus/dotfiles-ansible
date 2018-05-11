@@ -1,0 +1,79 @@
+---
+# vars file for homebrew
+homebrew_taps:
+  # - homebrew/dupes
+  # - homebrew/versions
+  # - homebrew/boneyard
+  # - homebrew/binary
+  - drone/drone
+  - sfus/customs
+
+homebrew_my_packages:
+#  - name: sfus/customs/utf8proc
+  - { name: sfus/customs/tmux, state: head }
+
+homebrew_packages:
+  - name: ansible
+  - name: fontforge
+  - name: git
+  - name: ghq
+  - name: hub
+  - name: less
+  - name: mas
+  # - name: npm
+  - name: peco
+  - name: python
+  - name: python3
+  - name: reattach-to-user-namespace
+  - name: the_silver_searcher
+  - name: tig
+  # - name: tmux
+  - name: vifm
+  - name: wget
+  - name: zsh
+
+homebrew_other_packages:
+  - name: aspell
+  - name: cmigemo
+  - name: ctags
+  - name: drone@0.8.6
+  - name: exiftool
+  - name: ffmpeg
+  - name: fzf
+  - name: gawk
+  - name: gdb
+  - { name: global, install_options: [ with-ctags, with-pygments ] }
+  - name: go
+  - name: gradle
+  - name: grep
+  - name: groovy
+  - name: heroku
+  - name: htop
+  - name: hugo
+  - name: imagemagick
+  - name: jq
+  - name: kafka
+  - name: kotlin
+  - name: lua
+  - name: cmigemo
+  - name: maven
+  - name: mecab
+  - name: mecab-ipadic
+  - { name: mysql, install_options: client-only }
+  - name: ninja
+  - name: nkf
+  - name: openssl
+  - name: pngpaste
+  - name: plantuml
+  - name: protobuf
+  - name: redis
+  - name: source-highlight
+  - name: sqlite
+  - name: ssh-copy-id
+  - name: swig
+  - name: tcl-tk
+  - name: tmux-xpanes
+  - name: ttyrec
+  # - name: utf8proc
+  - name: translate-shell
+  - name: w3m
