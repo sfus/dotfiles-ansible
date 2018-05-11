@@ -1,0 +1,31 @@
+---
+# vars file for mas
+
+packages:
+  # - { id: 497799835,  name: Xcode }
+  # - { id: 409201541,  name: Pages }
+  # - { id: 409203825,  name: Numbers }
+  # - { id: 409183694,  name: Keynote }
+  # - { id: 823766827,  name: OneDrive }
+  # - { id: 961632517,  name: Be Focused Pro }
+  # - { id: 510934532,  name: FreeMan }
+
+  - { id: 443987910,  name: 1Password }
+  - { id: 974971992,  name: Alternote }
+  - { id: 451732904,  name: App Language Chooser }
+  - { id: 1024640650, name: CotEditor }
+  - { id: 412448059,  name: ForkLift }
+  - { id: 668208984,  name: GIPHY Capture }
+  - { id: 539883307,  name: LINE }
+  - { id: 576338668,  name: Leaf }
+  - { id: 1063631769, name: Medis }
+  - { id: 405904955,  name: Mousepose }
+  - { id: 784260229,  name: PicGIF }
+  - { id: 407963104,  name: Pixelmator }
+  - { id: 425955336,  name: Skitch }
+  - { id: 1176895641, name: Spark }
+  - { id: 585829637,  name: Todoist }
+  - { id: 414298354,  name: ToyViewer }
+  - { id: 1278508951, name: Trello }
+  - { id: 485812721,  name: TweetDeck }
+  - { id: 410628904,  name: Wunderlist }

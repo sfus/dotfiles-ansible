@@ -1,0 +1,13 @@
+- hosts: localhost
+  connection: local
+
+  roles:
+    - role: dotfiles
+    - role: homebrew
+    - role: homebrew-cask
+    - role: mas
+    - role: perl
+    - role: ruby
+    - role: python
+    - role: nodejs
+    - role: fonts

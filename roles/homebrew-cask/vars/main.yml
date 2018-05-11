@@ -1,0 +1,71 @@
+---
+# vars file for homebrew-cask
+homebrew_cask_taps:
+  - homebrew/cask
+  - homebrew/cask-versions
+  - homebrew/cask-drivers
+
+homebrew_cask_unofficial_taps:
+  - caskroom/versions
+
+homebrew_cask_packages:
+  ## skip as already installed by administrator
+  # - name: google-chrome
+  # - name: slack
+
+  ## skip to install by Mac App Store (mas task)
+  # - name: coteditor
+  # - name: forklift
+  # - name: mousepose
+  # - name: 1password
+
+  - name: adoptopenjdk
+  - name: alfred
+  - name: bartender
+  - name: bettertouchtool
+  - name: bitbar
+  - name: box-drive
+  - name: dash
+  - name: diskwave
+  - name: docker
+  - name: dropbox
+  - name: duet
+  - name: emacs
+  - name: evernote
+  - name: google-backup-and-sync
+  - name: google-japanese-ime
+  - name: grammarly
+  - name: insomniax
+  - name: intellij-idea
+  - name: iterm2
+  - name: jasper
+  - name: jetbrains-toolbox
+  - name: julia
+  - name: karabiner-elements
+  - name: keycastr
+  - name: kindle
+  - name: kitematic
+  - name: logitech-options
+  - name: macdown
+  - name: mat
+  - name: mysqlworkbench
+  - name: onedrive
+  - name: osxfuse
+  - name: sequel-pro
+  - name: skim
+  - name: skitch
+  - name: skype
+  - name: stay
+  - name: vagrant
+  - name: virtualbox
+  - name: visualvm
+  - name: vlc
+  - name: xquartz
+
+homebrew_cask_unofficial_packages:
+  - name: java8
+
+homebrew_after_cask_packages:
+  - name: fuse-zip
+  - name: sshfs
+  - name: curlftpfs # depends on cask/xquartz

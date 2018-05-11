@@ -1,0 +1,45 @@
+---
+# tasks file for fonts
+
+- block:
+
+  - name: Download migu1m
+    get_url:
+      url: https://ja.osdn.net/frs/redir.php?m=jaist&f=mix-mplus-ipa%2F63545%2Fmigu-1m-20150712.zip
+      dest: ~/Downloads/migu-1m-20150712.zip
+      force: true
+
+  - name: Unzip migu1m
+    command: unzip -o migu-1m-20150712.zip
+    args:
+      chdir: ~/Downloads
+      warn: false
+    changed_when: false
+
+  - name: clone fontpatcher
+    git:
+      repo: https://github.com/powerline/fontpatcher.git
+      dest: ~/Downloads/fontpatcher
+
+  - name: patch font
+    command: "fontforge powerline-fontpatcher {{ item }}"
+    args:
+      chdir: ~/Downloads/fontpatcher/scripts
+    changed_when: false
+    with_fileglob:
+      - ~/Downloads/migu-1m-20150712/*.ttf
+
+  - name: copy *.ttf to  ~/Library/Fonts/
+    copy:
+      src: "{{ item }}"
+      dest: "~/Library/Fonts"
+    changed_when: false
+    with_fileglob:
+      - ~/Downloads/fontpatcher/scripts/*.ttf
+
+  - name: fc-cache
+    command: fc-cache -vf
+    changed_when: false
+
+  tags:
+    - fonts
