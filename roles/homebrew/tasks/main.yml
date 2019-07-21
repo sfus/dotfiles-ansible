@@ -39,6 +39,20 @@
     tags: homebrew-install-others
 
   - block:
+    - name: check gcc version
+      shell: "brew info gcc | head -1 | awk '{print $3}' | cut -d. -f1"
+      register: homebrew_check_gcc_version
+      changed_when: false
+
+    - name: create symlink GNU g++
+      file:
+        src: '/usr/local/bin/g++-{{ homebrew_check_gcc_version.stdout }}'
+        dest: '/usr/local/bin/g++'
+        state: link
+
+    tags: homebrew-symlink-g++
+
+  - block:
     - name: check gtags (GNU global) for pygments
       shell: gtags --debug 2> /dev/null
       register: homebrew_check_gtags
