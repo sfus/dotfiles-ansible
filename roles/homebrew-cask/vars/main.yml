@@ -59,6 +59,7 @@ homebrew_cask_packages:
   - name: vagrant
   - name: virtualbox
   - name: visualvm
+  - name: visual-studio-code
   - name: vlc
   - name: xquartz
 
