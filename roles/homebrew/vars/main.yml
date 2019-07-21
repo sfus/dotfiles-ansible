@@ -41,6 +41,7 @@ homebrew_other_packages:
   - name: ffmpeg
   - name: fzf
   - name: gawk
+  - name: gcc
   - name: gdb
   - { name: global, install_options: [ with-ctags, with-pygments ] }
   - name: go
