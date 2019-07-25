@@ -11,3 +11,4 @@ pip_packages:
   - name: scipy
   - name: gensim
   - name: mecab-python3
+  - name: online-judge-tools
