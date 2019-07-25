@@ -37,6 +37,10 @@
       when: pyenv_check_install.stdout != '0'
     tags: python-install-python3
 
+    # If `pyenv install 3.x.x` fails on MacOS Mojave, execute the following command in advance.
+    # $ sudo installer -pkg /Library/Developer/CommandLineTools/Packages/macOS_SDK_headers_for_macOS_10.14.pkg -target /
+    # -> https://qiita.com/zreactor/items/c3fd04417e0d61af0afe
+
   - block:
     - name: check python2 version
       shell: "{{ python_pyenv_dir}}/bin/pyenv versions | grep {{ python_python2_version }} > /dev/null; echo $?"

@@ -78,3 +78,4 @@ homebrew_other_packages:
   # - name: utf8proc
   - name: translate-shell
   - name: w3m
+  - name: zlib
