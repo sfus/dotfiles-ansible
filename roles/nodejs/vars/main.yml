@@ -6,3 +6,5 @@ nodejs_npm_packages:
   - name: ionic
   - name: cordova
 #  - name: ios-deploy
+  - name: atcoder-cli
+    # then execute `acc login` and `oj login https://atcoder.jp/` for acc/oj command
