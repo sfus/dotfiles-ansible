@@ -44,6 +44,7 @@ homebrew_other_packages:
   - name: gcc
   - name: gdb
   - { name: global, install_options: [ with-ctags, with-pygments ] }
+  - name: gnu-time
   - name: go
   - name: gradle
   - name: grep
