@@ -9,7 +9,7 @@ homebrew_taps:
   - sfus/customs
 
 homebrew_my_packages:
-#  - name: sfus/customs/utf8proc
+  - name: sfus/customs/utf8proc
   - { name: sfus/customs/tmux, state: head }
 
 homebrew_packages:
@@ -27,7 +27,7 @@ homebrew_packages:
   - name: reattach-to-user-namespace
   - name: the_silver_searcher
   - name: tig
-  # - name: tmux
+  - name: tmux
   - name: vifm
   - name: wget
   - name: zsh
