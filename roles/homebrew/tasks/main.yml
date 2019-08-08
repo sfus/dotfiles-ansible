@@ -39,6 +39,14 @@
     tags: homebrew-install-others
 
   - block:
+    - name: symlink gtime (GNU time) to time
+      file:
+        src: '/usr/local/bin/gtime'
+        dest: '/usr/local/bin/time'
+        state: link
+    tags: homebrew-symlink-gtime
+
+  - block:
     - name: check gcc version
       shell: "brew info gcc | head -1 | awk '{print $3}' | cut -d. -f1"
       register: homebrew_check_gcc_version
