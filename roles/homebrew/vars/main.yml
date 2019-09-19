@@ -37,6 +37,7 @@ homebrew_other_packages:
   - name: cmigemo
   - name: ctags
   - name: drone@0.8.6
+  - name: dive
   - name: exiftool
   - name: ffmpeg
   - name: fzf
@@ -58,7 +59,7 @@ homebrew_other_packages:
   - name: kafka
   - name: kotlin
   - name: lua
-  - name: cmigemo
+  - name: lazydocker
   - name: maven
   - name: mecab
   - name: mecab-ipadic
