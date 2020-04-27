@@ -9,6 +9,7 @@ packages:
   # - { id: 823766827,  name: OneDrive }
   # - { id: 961632517,  name: Be Focused Pro }
   # - { id: 510934532,  name: FreeMan }
+  # - { id: 803453959,  name: Slack }
 
   - { id: 443987910,  name: 1Password }
   - { id: 974971992,  name: Alternote }
@@ -16,12 +17,15 @@ packages:
   - { id: 1024640650, name: CotEditor }
   - { id: 412448059,  name: ForkLift }
   - { id: 668208984,  name: GIPHY Capture }
+  - { id: 1142151959, name: JustFocus }
   - { id: 539883307,  name: LINE }
   - { id: 576338668,  name: Leaf }
   - { id: 1063631769, name: Medis }
+  - { id: 1274495053, name: Microsoft To Do }
   - { id: 405904955,  name: Mousepose }
   - { id: 784260229,  name: PicGIF }
   - { id: 407963104,  name: Pixelmator }
+  - { id: 452695239,  name: QREncoder }
   - { id: 425955336,  name: Skitch }
   - { id: 1176895641, name: Spark }
   - { id: 585829637,  name: Todoist }
