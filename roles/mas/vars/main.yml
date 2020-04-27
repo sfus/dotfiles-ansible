@@ -10,6 +10,7 @@ packages:
   # - { id: 961632517,  name: Be Focused Pro }
   # - { id: 510934532,  name: FreeMan }
   # - { id: 803453959,  name: Slack }
+  # - { id: 410628904,  name: Wunderlist }
 
   - { id: 443987910,  name: 1Password }
   - { id: 974971992,  name: Alternote }
@@ -32,4 +33,3 @@ packages:
   - { id: 414298354,  name: ToyViewer }
   - { id: 1278508951, name: Trello }
   - { id: 485812721,  name: TweetDeck }
-  - { id: 410628904,  name: Wunderlist }
