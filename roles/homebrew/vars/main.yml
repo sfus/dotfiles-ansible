@@ -51,12 +51,10 @@ homebrew_other_packages:
   - name: gradle
   - name: grep
   - name: groovy
-  - name: heroku
   - name: htop
   - name: hugo
   - name: imagemagick
   - name: jq
-  - name: kafka
   - name: kotlin
   - name: lua
   - name: lazydocker
@@ -76,7 +74,7 @@ homebrew_other_packages:
   - name: ssh-copy-id
   - name: swig
   - name: tcl-tk
-  - name: tmux-xpanes
+  # - name: tmux-xpanes
   - name: ttyrec
   # - name: utf8proc
   - name: translate-shell
