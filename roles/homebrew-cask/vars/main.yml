@@ -12,6 +12,7 @@ homebrew_cask_packages:
   ## skip as already installed by administrator
   # - name: google-chrome
   # - name: slack
+  # - name: box-drive
 
   ## skip to install by Mac App Store (mas task)
   # - name: coteditor
@@ -19,12 +20,11 @@ homebrew_cask_packages:
   # - name: mousepose
   # - name: 1password
 
-  - name: adoptopenjdk
+  - name: adoptopenjdk8
   - name: alfred
   - name: bartender
   - name: bettertouchtool
   - name: bitbar
-  - name: box-drive
   - name: dash
   - name: diskwave
   - name: docker
@@ -35,8 +35,8 @@ homebrew_cask_packages:
   - name: google-backup-and-sync
   - name: google-japanese-ime
   - name: grammarly
-  - name: insomniax
-  - name: intellij-idea
+  # - name: insomniax
+  # - name: intellij-idea
   - name: iterm2
   - name: jasper
   - name: jetbrains-toolbox
@@ -59,14 +59,13 @@ homebrew_cask_packages:
   - name: trailer
   - name: turbo-boost-switcher
   - name: vagrant
-  - name: virtualbox
+  # - name: virtualbox
   - name: visualvm
   - name: visual-studio-code
   - name: vlc
   - name: xquartz
 
-homebrew_cask_unofficial_packages:
-  - name: java8
+homebrew_cask_unofficial_packages: []
 
 homebrew_after_cask_packages:
   - name: fuse-zip
