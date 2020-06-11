@@ -65,11 +65,12 @@
     - name: set pyenv global
       shell: "{{ python_pyenv_dir}}/bin/pyenv global {{ python_python3_version }} {{ python_python2_version }}"
       when: pyenv_check_default.stdout != '0'
+
     tags: python-enable-python
 
   - block:
     - name: install pip packages
-      command: "pip install {{ item.name }}"
+      command: "{{ python_pyenv_dir }}/shims/pip install {{ item.name }}"
       register: pip_output
       changed_when: '"Requirement already satisfied" not in pip_output.stdout'
       with_items: '{{ pip_packages | default([]) }}'
