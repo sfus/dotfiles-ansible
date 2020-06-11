@@ -10,11 +10,11 @@
         state: present
       with_items: '{{ homebrew_cask_taps | default([]) }}'
 
-    - name: untap unofficial homebrew cask
-      homebrew_tap:
-        name: '{{ item }}'
-        state: absent
-      with_items: '{{ homebrew_cask_unofficial_taps | default([]) }}'
+#    - name: untap unofficial homebrew cask
+#      homebrew_tap:
+#        name: '{{ item }}'
+#        state: absent
+#      with_items: '{{ homebrew_cask_unofficial_taps | default([]) }}'
 
     - name: install homebrew cask packages
       homebrew_cask: name="{{ item.name }}" state=present
@@ -35,19 +35,19 @@
       - homebrew-cask-official
 
   - block:
-    - name: tap unofficial homebrew cask
-      homebrew_tap:
-        name: '{{ item }}'
-        state: present
-      changed_when: false
-      with_items: '{{ homebrew_cask_unofficial_taps | default([]) }}'
+#    - name: tap unofficial homebrew cask
+#      homebrew_tap:
+#        name: '{{ item }}'
+#        state: present
+#      changed_when: false
+#      with_items: '{{ homebrew_cask_unofficial_taps | default([]) }}'
 
-    - name: install homebrew cask unofficial packages
-      homebrew_cask: name="{{ item.name }}" state=present
-      environment:
-        HOMEBREW_CASK_OPTS: "--appdir=/Applications"
-      # install_options: 'appdir=/Applications'
-      with_items: '{{ homebrew_cask_unofficial_packages | default([]) }}'
+#    - name: install homebrew cask unofficial packages
+#      homebrew_cask: name="{{ item.name }}" state=present
+#      environment:
+#        HOMEBREW_CASK_OPTS: "--appdir=/Applications"
+#      # install_options: 'appdir=/Applications'
+#      with_items: '{{ homebrew_cask_unofficial_packages | default([]) }}'
 
     - name: update brew list
       shell: brew list > brewlist.txt
