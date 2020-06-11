@@ -11,9 +11,9 @@ packages:
   # - { id: 510934532,  name: FreeMan }
   # - { id: 803453959,  name: Slack }
   # - { id: 410628904,  name: Wunderlist }
+  # - { id: 974971992,  name: Alternote }
 
   - { id: 443987910,  name: 1Password }
-  - { id: 974971992,  name: Alternote }
   - { id: 451732904,  name: App Language Chooser }
   - { id: 1024640650, name: CotEditor }
   - { id: 412448059,  name: ForkLift }
