@@ -5,9 +5,6 @@ homebrew_cask_taps:
   - homebrew/cask-versions
   - homebrew/cask-drivers
 
-homebrew_cask_unofficial_taps:
-  - caskroom/versions
-
 homebrew_cask_packages:
   ## skip as already installed by administrator
   # - name: google-chrome
@@ -64,8 +61,6 @@ homebrew_cask_packages:
   - name: visual-studio-code
   - name: vlc
   - name: xquartz
-
-homebrew_cask_unofficial_packages: []
 
 homebrew_after_cask_packages:
   - name: fuse-zip
