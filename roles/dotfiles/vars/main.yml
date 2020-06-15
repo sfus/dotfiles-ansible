@@ -1,7 +1,6 @@
 ---
 # vars file for dotfiles
 dotfiles_dir: ~/Git/dotfiles
-dotfiles_private_dir: ~/Git/dotfiles-private
 dotfiles_parent_dir: ~/Git
 dotfiles_el_get_dir: ~/.emacs.d/el-get
 dotfiles_el_get_custom_packages: []

@@ -24,19 +24,6 @@
     - dotfiles
 
 - block:
-  - name: clone dotfiles-private
-    git:
-      repo: git@github.com:sfus/dotfiles-private.git
-      dest: '{{ dotfiles_private_dir }}'
-
-  - name: create symbolic links to dotfiles-private
-    command: "{{ dotfiles_private_dir }}/create_symlink.sh"
-    changed_when: false
-
-  tags:
-    - dotfiles-private
-
-- block:
   - name: clone custom el-get packages
     git:
       repo: "git@github.com:sfus/{{ item.name }}.git"
