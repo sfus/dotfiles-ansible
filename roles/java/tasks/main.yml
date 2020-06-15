@@ -1,0 +1,29 @@
+---
+# tasks file for java
+# https://sdkman.io/install
+- block:
+
+  - name: check sdkman
+    stat:
+      path: "{{ sdkman_dir }}"
+    register: dir_stat
+
+  - name: install sdkman
+    shell: "curl -s 'https://get.sdkman.io' | bash"
+    args:
+      warn: no
+    when: dir_stat.stat.isdir is not defined and not ansible_check_mode
+
+  - name: install sdkman items
+    shell: "source {{ sdkman_dir }}/bin/sdkman-init.sh && sdk install {{ item.command }} {{ item.id }}"
+    with_items: "{{ sdkman_packages }}"
+    register: sdkman_install_result
+    changed_when: "'already installed' not in sdkman_install_result.stdout"
+    failed_when: "sdkman_install_result.rc != 0 and 'already installed' not in sdkman_install_result.stdout"
+
+  - name: set sdkman defaults
+    shell: "source {{ sdkman_dir }}/bin/sdkman-init.sh && sdk default {{ item.command }} {{ item.id }}"
+    with_items: "{{ sdkman_defaults }}"
+    changed_when: false
+
+  tags: java
