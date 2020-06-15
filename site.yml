@@ -11,3 +11,4 @@
     - role: nodejs
     - role: perl
     - role: ruby
+    - role: java
