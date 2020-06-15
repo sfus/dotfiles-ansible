@@ -6,8 +6,8 @@
     - role: homebrew
     - role: homebrew-cask
     - role: mas
-    - role: perl
-    - role: ruby
+    - role: fonts
     - role: python
     - role: nodejs
-    - role: fonts
+    - role: perl
+    - role: ruby
