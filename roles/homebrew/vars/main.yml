@@ -69,6 +69,7 @@ homebrew_other_packages:
   - name: plantuml
   - name: protobuf
   - name: redis
+  - name: rcmdnk/rcmdnkpac/parse-plist
   - name: source-highlight
   - name: sqlite
   - name: ssh-copy-id
