@@ -12,3 +12,4 @@
     - role: perl
     - role: ruby
     - role: java
+    - role: emacs

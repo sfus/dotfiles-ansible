@@ -1,0 +1,24 @@
+---
+# tasks file for emacs
+- block:
+  - block:
+
+    - name: clone emacs.d
+      git:
+        repo: git@github.com:sfus/emacs.d.git
+        dest: '{{ emacs_dir }}'
+        update: no
+
+    - name: create symbolic links to emacs
+      command: "{{ emacs_dir }}/create_symlink.sh"
+      changed_when: false
+
+    - name: run init script to download packages
+      command: "{{ emacs_dir }}/init.sh"
+      changed_when: false
+
+    tags:
+      - emacs-init
+
+  tags:
+    - emacs
