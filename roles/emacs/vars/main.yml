@@ -1,0 +1,3 @@
+---
+# vars file for emacs
+emacs_dir: ~/Git/emacs.d
