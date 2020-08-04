@@ -6,11 +6,11 @@ homebrew_taps:
   # - homebrew/boneyard
   # - homebrew/binary
   - drone/drone
-  - sfus/customs
+  # - sfus/customs
 
-homebrew_my_packages:
-  - name: sfus/customs/utf8proc
-  - { name: sfus/customs/tmux, state: head }
+homebrew_my_packages: []
+  # - name: sfus/customs/utf8proc
+  # - { name: sfus/customs/tmux, state: head }
 
 homebrew_packages:
   - name: ansible
@@ -58,6 +58,7 @@ homebrew_other_packages:
   - name: kotlin
   - name: lua
   - name: lazydocker
+  - name: libsecret
   - name: maven
   - name: mecab
   - name: mecab-ipadic
