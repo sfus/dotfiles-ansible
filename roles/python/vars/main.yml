@@ -13,3 +13,5 @@ pip_packages:
   - name: gensim
   - name: mecab-python3
   - name: online-judge-tools
+  - name: requests
+  - name: configparser

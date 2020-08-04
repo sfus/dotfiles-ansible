@@ -3,9 +3,20 @@
 nodejs_ndenv_dir: ~/.ndenv
 nodejs_node_version: v12.18.2
 nodejs_npm_packages:
+  ## web development
+  - name: prettier
+  - name: eslint
+  - name: node-gyp
+  - name: webpack
+  - name: webpack-cli
+
+  ## mobile development
   - name: ionic
   - name: cordova
-#  - name: ios-deploy
+  # - name: ios-deploy
+
+  ## programming contest
   - name: atcoder-cli
     # then execute `acc login` and `oj login https://atcoder.jp/` for acc/oj command
-  - name: prettier
+  # - name: skygragon/leetcode-cli
+  - name: leetcode-tools/leetcode-cli
