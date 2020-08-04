@@ -1,7 +1,7 @@
 ---
 # vars file for nodejs
-nodejs_ndenv_dir: ~/.ndenv
-nodejs_node_version: v12.18.2
+nodejs_nodenv_dir: ~/.nodenv
+nodejs_node_version: 12.18.2
 nodejs_npm_packages:
   ## web development
   - name: prettier
