@@ -4,40 +4,40 @@
 - block:
 
   - block:
-    - name: check ndenv dir
+    - name: check nodenv dir
       stat:
-        path: "{{ nodejs_ndenv_dir }}"
+        path: "{{ nodejs_nodenv_dir }}"
       register: dir_stat
 
-    - name: install ndenv
+    - name: install nodenv
       git:
-        repo: https://github.com/riywo/ndenv
-        dest: "{{ nodejs_ndenv_dir }}"
+        repo: https://github.com/nodenv/nodenv.git
+        dest: "{{ nodejs_nodenv_dir }}"
       when: dir_stat.stat.isdir is not defined and not ansible_check_mode
 
     - name: install node-build
       git:
-        repo: https://github.com/riywo/node-build.git
-        dest: "{{ nodejs_ndenv_dir }}/plugins/node-build"
+        repo: https://github.com/nodenv/node-build.git
+        dest: "{{ nodejs_nodenv_dir }}/plugins/node-build"
       when: dir_stat.stat.isdir is not defined and not ansible_check_mode
 
     - name: install node
-      command: "{{ nodejs_ndenv_dir }}/bin/ndenv install {{ nodejs_node_version }}"
-      register: nodejs_ndenv_node_result
-      changed_when: "'Installed node' in nodejs_ndenv_node_result.stderr"
-      failed_when: "nodejs_ndenv_node_result.rc != 0 and 'already exists' not in nodejs_ndenv_node_result.stderr"
+      command: "{{ nodejs_nodenv_dir }}/bin/nodenv install {{ nodejs_node_version }}"
+      register: nodejs_nodenv_node_result
+      changed_when: "'Installed node' in nodejs_nodenv_node_result.stderr"
+      failed_when: "nodejs_nodenv_node_result.rc != 0 and 'already exists' not in nodejs_nodenv_node_result.stderr"
 
     - name: set global
-      command: "{{ nodejs_ndenv_dir }}/bin/ndenv global {{ nodejs_node_version }}"
+      command: "{{ nodejs_nodenv_dir }}/bin/nodenv global {{ nodejs_node_version }}"
       changed_when: false
 
-    tags: ndenv
+    tags: nodenv
 
   - block:
     - name: install npm -g
       npm:
         name: "{{ item.name }}"
-        executable: "{{ nodejs_ndenv_dir }}/shims/npm"
+        executable: "{{ nodejs_nodenv_dir }}/shims/npm"
         global: yes
       with_items: '{{ nodejs_npm_packages | default([]) }}'
 
