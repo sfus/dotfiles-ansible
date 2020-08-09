@@ -2,7 +2,7 @@
 # vars file for java
 sdkman_dir: ~/.sdkman
 sdkman_packages:
-  - { command: java, id: 11.0.7.hs-adpt }
-  - { command: java, id: 14.0.1.hs-adpt }
-sdkman_defaults: 
-  - { command: java, id: 11.0.7.hs-adpt }
+  - { command: java, id: 11.0.8.hs-adpt }
+  - { command: java, id: 14.0.2.hs-adpt }
+sdkman_defaults:
+  - { command: java, id: 11.0.8.hs-adpt }
