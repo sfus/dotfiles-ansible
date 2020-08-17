@@ -22,14 +22,22 @@
       when: dir_stat.stat.isdir is not defined and not ansible_check_mode
 
     - name: install node
-      command: "{{ nodejs_nodenv_dir }}/bin/nodenv install {{ nodejs_node_version }}"
+      command: "{{ nodejs_nodenv_dir }}/bin/nodenv install {{ item }}"
       register: nodejs_nodenv_node_result
       changed_when: "'Installed node' in nodejs_nodenv_node_result.stderr"
       failed_when: "nodejs_nodenv_node_result.rc != 0 and 'already exists' not in nodejs_nodenv_node_result.stderr"
+      with_items: '{{ nodejs_node_versions }}'
 
     - name: set global
-      command: "{{ nodejs_nodenv_dir }}/bin/nodenv global {{ nodejs_node_version }}"
+      command: "{{ nodejs_nodenv_dir }}/bin/nodenv global {{ nodejs_node_default_version }}"
       changed_when: false
+
+    - name: instal npm
+      npm:
+        name: "npm"
+        version: "{{ nodejs_npm_default_version }}"
+        executable: "{{ nodejs_nodenv_dir }}/shims/npm"
+        global: yes
 
     tags: nodenv
 
