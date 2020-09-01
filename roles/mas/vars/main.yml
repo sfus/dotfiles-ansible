@@ -21,6 +21,7 @@ packages:
   - { id: 539883307,  name: LINE }
   - { id: 576338668,  name: Leaf }
   - { id: 1063631769, name: Medis }
+  - { id: 714196447,  name: MenuBar Stats }
   - { id: 1274495053, name: Microsoft To Do }
   - { id: 405904955,  name: Mousepose }
   - { id: 784260229,  name: PicGIF }
