@@ -56,6 +56,10 @@ homebrew_other_packages:
   - name: imagemagick
   - name: jq
   - name: kotlin
+  - name: kubernetes-cli
+  - name: kubectx
+  - name: kustomize
+  - name: kind
   - name: lua
   - name: lazydocker
   - name: libsecret
