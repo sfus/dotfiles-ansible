@@ -6,6 +6,7 @@ homebrew_taps:
   # - homebrew/boneyard
   # - homebrew/binary
   - drone/drone
+  - johanhaleby/kubetail
   # - sfus/customs
 
 homebrew_my_packages: []
@@ -22,7 +23,7 @@ homebrew_packages:
   - name: mas
   # - name: npm
   - name: peco
-  - name: python
+  # - name: python
   - name: python3
   - name: reattach-to-user-namespace
   - name: the_silver_searcher
@@ -54,10 +55,12 @@ homebrew_other_packages:
   - name: htop
   - name: hugo
   - name: imagemagick
+  - name: jsonnet
   - name: jq
   - name: kotlin
   - name: kubernetes-cli
   - name: kubectx
+  - { name: kubetail, install_options: [ with-short-names ] }
   - name: kustomize
   - name: kind
   - name: lua
