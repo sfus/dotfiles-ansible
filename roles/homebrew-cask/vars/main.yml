@@ -53,6 +53,7 @@ homebrew_cask_packages:
   - name: skitch
   - name: skype
   - name: stay
+  - name: td-agent
   - name: trailer
   - name: turbo-boost-switcher
   - name: vagrant
