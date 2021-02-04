@@ -17,7 +17,7 @@
 #      with_items: '{{ homebrew_cask_unofficial_taps | default([]) }}'
 
     - name: install homebrew cask packages
-      homebrew_cask: name="{{ item.name }}" state=present
+      homebrew: name="{{ item.name }}" state=present
       environment:
         HOMEBREW_CASK_OPTS: "--appdir=/Applications"
       # install_options: 'appdir=/Applications'
@@ -53,8 +53,8 @@
       shell: brew list > brewlist.txt
       changed_when: false
 
-    - name: update brew cask list
-      shell: brew cask list > casklist.txt
+    - name: update brew --cask list
+      shell: brew --cask list > casklist.txt
       changed_when: false
 
     - name: untap unofficial homebrew cask
