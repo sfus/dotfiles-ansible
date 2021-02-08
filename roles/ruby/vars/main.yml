@@ -2,3 +2,7 @@
 # vars file for ruby
 ruby_rbenv_dir: ~/.rbenv
 ruby_version: 2.5.1
+ruby_gems:
+  - name: fluent-plugin-kubernetes_metadata_filter
+  - name: fluent-plugin-prometheus
+  - name: fluent-plugin-rewrite-tag-filter
