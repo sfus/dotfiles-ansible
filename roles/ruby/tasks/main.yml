@@ -2,50 +2,59 @@
 # tasks file for ruby
 # https://qiita.com/isobecky74/items/8da462a4a3b6f41b5a49
 - block:
+  - block:
+    - name: check rbenv
+      stat:
+        path: "{{ ruby_rbenv_dir }}"
+      register: dir_stat
 
-  - name: check rbenv
-    stat:
-      path: "{{ ruby_rbenv_dir }}"
-    register: dir_stat
+    - name: install rbenv
+      git:
+        repo: https://github.com/sstephenson/rbenv.git
+        dest: "{{ ruby_rbenv_dir }}"
+      when: dir_stat.stat.isdir is not defined and not ansible_check_mode
 
-  - name: install rbenv
-    git:
-      repo: https://github.com/sstephenson/rbenv.git
-      dest: "{{ ruby_rbenv_dir }}"
-    when: dir_stat.stat.isdir is not defined and not ansible_check_mode
+    - name: install ruby-build
+      git:
+        repo: https://github.com/sstephenson/ruby-build.git
+        dest: "{{ ruby_rbenv_dir }}/plugins/ruby-build"
+      when: dir_stat.stat.isdir is not defined and not ansible_check_mode
 
-  - name: install ruby-build
-    git:
-      repo: https://github.com/sstephenson/ruby-build.git
-      dest: "{{ ruby_rbenv_dir }}/plugins/ruby-build"
-    when: dir_stat.stat.isdir is not defined and not ansible_check_mode
+    - name: check rbenv version
+      shell: "{{ ruby_rbenv_dir}}/bin/rbenv versions | grep {{ ruby_version }} > /dev/null; echo $?"
+      register: rbenv_check_install
+      changed_when: rbenv_check_install.stdout != '0'
 
-  - name: check rbenv version
-    shell: "{{ ruby_rbenv_dir}}/bin/rbenv versions | grep {{ ruby_version }} > /dev/null; echo $?"
-    register: rbenv_check_install
-    changed_when: rbenv_check_install.stdout != '0'
+    - name: install ruby
+      shell: "{{ ruby_rbenv_dir}}/bin/rbenv install -v {{ ruby_version }}"
+      when: rbenv_check_install.stdout != '0'
 
-  - name: install ruby
-    shell: "{{ ruby_rbenv_dir}}/bin/rbenv install -v {{ ruby_version }}"
-    when: rbenv_check_install.stdout != '0'
+    - name: rbenv rehash
+      shell: "{{ ruby_rbenv_dir}}/bin/rbenv rehash {{ ruby_version }}"
+      when: rbenv_check_install.stdout != '0'
 
-  - name: rbenv rehash
-    shell: "{{ ruby_rbenv_dir}}/bin/rbenv rehash {{ ruby_version }}"
-    when: rbenv_check_install.stdout != '0'
+    - name: check ruby version
+      shell: "{{ ruby_rbenv_dir}}/bin/rbenv version | grep {{ ruby_version }} > /dev/null; echo $?"
+      register: rbenv_check_default
+      changed_when: rbenv_check_default.stdout != '0'
 
-  - name: check ruby version
-    shell: "{{ ruby_rbenv_dir}}/bin/rbenv version | grep {{ ruby_version }} > /dev/null; echo $?"
-    register: rbenv_check_default
-    changed_when: rbenv_check_default.stdout != '0'
+    - name: set default ruby version
+      shell: "{{ ruby_rbenv_dir}}/bin/rbenv global {{ ruby_version }}"
+      when: rbenv_check_default.stdout != '0'
 
-  - name: set default ruby version
-    shell: "{{ ruby_rbenv_dir}}/bin/rbenv global {{ ruby_version }}"
-    when: rbenv_check_default.stdout != '0'
+    - name: Install bundler
+      gem:
+        name: bundler
+        user_install: no
+        executable: ~/.rbenv/shims/gem
+    tags: ruby-install
 
-  - name: Install bundler
-    gem:
-      name: bundler
-      user_install: no
-      executable: ~/.rbenv/shims/gem
+  - block:
+    - name: install ruby gems
+      command: "{{ ruby_rbenv_dir }}/shims/gem install {{ item.name }}"
+      register: gem_output
+      changed_when: '"Requirement already satisfied" not in gem_output.stdout' # TODO
+      with_items: '{{ ruby_gems | default([]) }}'
+    tags: ruby-gem-install
 
   tags: ruby
