@@ -7,10 +7,16 @@
         path: "{{ python_pyenv_dir }}"
       register: dir_stat
 
-    - name: install pybenv
+    - name: install pyenv
       git:
         repo: https://github.com/yyuu/pyenv.git
         dest: "{{ python_pyenv_dir }}"
+      when: dir_stat.stat.isdir is not defined and not ansible_check_mode
+
+    - name: install pyenv-update
+      git:
+        repo: https://github.com/yyuu/pyenv-update.git
+        dest: "{{ python_pyenv_dir }}/plugins/pyenv-update"
       when: dir_stat.stat.isdir is not defined and not ansible_check_mode
 
     - name: install virtual-env
@@ -27,6 +33,11 @@
     tags: python-install-pyenv
 
   - block:
+    - name: update pyenv
+      shell: "{{ python_pyenv_dir}}/bin/pyenv update > /dev/null; echo $?"
+      register: pyenv_update
+      changed_when: pyenv_update.stdout != '0'
+
     - name: check python3 version
       shell: "{{ python_pyenv_dir}}/bin/pyenv versions | grep {{ python_python3_version }} > /dev/null; echo $?"
       register: pyenv_check_install
