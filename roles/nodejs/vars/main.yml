@@ -4,8 +4,9 @@ nodejs_nodenv_dir: ~/.nodenv
 nodejs_node_versions:
   - 12.16.1
   - 12.18.2
-nodejs_node_default_version: 12.16.1
-nodejs_npm_default_version: 6.13.4
+  - 14.15.1
+nodejs_node_default_version: 14.15.1
+nodejs_npm_default_version: 6.14.8
 
 nodejs_npm_packages:
   ## web development
