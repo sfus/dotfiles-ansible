@@ -22,7 +22,8 @@ homebrew_cask_packages:
   - name: bartender
   - name: bettertouchtool
   - name: bitbar
-  - name: dash
+  # - name: dash
+  - name: deepl
   - name: diskwave
   - name: docker
   - name: dropbox
