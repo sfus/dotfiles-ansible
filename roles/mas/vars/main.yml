@@ -20,7 +20,9 @@ packages:
   - { id: 1142151959, name: JustFocus }
   - { id: 539883307,  name: LINE }
   - { id: 576338668,  name: Leaf }
+  - { id: 411213048,  name: LadioCast }
   - { id: 1063631769, name: Medis }
+  - { id: 1532419400, name: MeetingBar }
   - { id: 714196447,  name: MenuBar Stats }
   - { id: 1274495053, name: Microsoft To Do }
   - { id: 405904955,  name: Mousepose }
