@@ -4,6 +4,6 @@ sdkman_dir: ~/.sdkman
 sdkman_packages:
   - { command: java, id: 8.0.265.hs-adpt }
   - { command: java, id: 11.0.8.hs-adpt }
-  - { command: java, id: 14.0.2.hs-adpt }
+  - { command: java, id: 17.0.1-tem }
 sdkman_defaults:
   - { command: java, id: 11.0.8.hs-adpt }
