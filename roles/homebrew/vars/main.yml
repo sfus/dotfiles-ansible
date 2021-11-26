@@ -82,6 +82,7 @@ homebrew_other_packages:
   - name: sqlite
   - name: ssh-copy-id
   - name: swig
+  - name: k1LoW/tap/tbls
   - name: tcl-tk
   # - name: tmux-xpanes
   - name: ttyrec
