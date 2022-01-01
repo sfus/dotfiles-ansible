@@ -35,6 +35,7 @@ homebrew_packages:
 
 homebrew_other_packages:
   - name: aspell
+  - name: bat
   - name: cmigemo
   - name: ctags
   - name: drone@0.8.6
@@ -49,6 +50,7 @@ homebrew_other_packages:
   - { name: global, install_options: [ with-ctags, with-pygments ] }
   - name: gnu-time
   - name: go
+  - name: google-cloud-sdk
   - name: gradle
   - name: grep
   - name: groovy
@@ -78,9 +80,11 @@ homebrew_other_packages:
   - name: protobuf
   - name: redis
   - name: rcmdnk/rcmdnkpac/parse-plist
+  - name: ripgrep
   - name: source-highlight
   - name: sqlite
   - name: ssh-copy-id
+  - name: stern
   - name: swig
   - name: k1LoW/tap/tbls
   - name: tcl-tk
