@@ -67,6 +67,7 @@ homebrew_other_packages:
   - name: kind
   - name: lua
   - name: lazydocker
+  - name: lesspipe
   - name: libsecret
   - name: maven
   - name: mecab
