@@ -30,7 +30,6 @@ homebrew_cask_packages:
   - name: duet
   - name: emacs
   - name: evernote
-  - name: google-backup-and-sync
   - name: google-japanese-ime
   - name: grammarly
   # - name: insomniax
@@ -38,7 +37,7 @@ homebrew_cask_packages:
   - name: iterm2
   - name: jasper
   - name: jetbrains-toolbox
-  - name: julia
+  # - name: julia
   - name: karabiner-elements
   - name: keycastr
   - name: kindle

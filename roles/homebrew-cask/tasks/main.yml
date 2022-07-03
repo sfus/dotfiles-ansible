@@ -17,7 +17,7 @@
 #      with_items: '{{ homebrew_cask_unofficial_taps | default([]) }}'
 
     - name: install homebrew cask packages
-      homebrew: name="{{ item.name }}" state=present
+      community.general.packaging.os.homebrew_cask: name="{{ item.name }}" state=present
       environment:
         HOMEBREW_CASK_OPTS: "--appdir=/Applications"
       # install_options: 'appdir=/Applications'
