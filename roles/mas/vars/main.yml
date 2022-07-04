@@ -13,7 +13,7 @@ packages:
 
   - { id: 443987910,  name: 1Password }
   - { id: 451732904,  name: App Language Chooser }
-  - { id: 961632517,  name: Be Focused Pro }
+  # - { id: 961632517,  name: Be Focused Pro }
   - { id: 1024640650, name: CotEditor }
   - { id: 412448059,  name: ForkLift }
   - { id: 668208984,  name: GIPHY Capture }
@@ -34,4 +34,3 @@ packages:
   - { id: 585829637,  name: Todoist }
   - { id: 414298354,  name: ToyViewer }
   - { id: 1278508951, name: Trello }
-  - { id: 485812721,  name: TweetDeck }
