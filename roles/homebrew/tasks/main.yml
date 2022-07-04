@@ -41,8 +41,8 @@
   - block:
     - name: symlink gtime (GNU time) to time
       file:
-        src: '/usr/local/bin/gtime'
-        dest: '/usr/local/bin/time'
+        src: '{{ homebrew_root }}/bin/gtime'
+        dest: '{{ homebrew_root }}/bin/time'
         state: link
     tags: homebrew-symlink-gtime
 
@@ -54,8 +54,8 @@
 
     - name: create symlink GNU g++
       file:
-        src: '/usr/local/bin/g++-{{ homebrew_check_gcc_version.stdout }}'
-        dest: '/usr/local/bin/g++'
+        src: '{{ homebrew_root }}/bin/g++-{{ homebrew_check_gcc_version.stdout }}'
+        dest: '{{ homebrew_root }}/bin/g++'
         state: link
 
     tags: homebrew-symlink-g++
@@ -63,30 +63,30 @@
   - block:
     - name: create directory for bits/stdc++.h
       file:
-        path: /usr/local/include/bits
+        path: '{{ homebrew_root }}/include/bits'
         state: directory
         mode: '0755'
 
     - name: check stdc++.h location
-      shell: "find /usr/local/Cellar/gcc -name 'stdc++.h' | grep {{ homebrew_check_gcc_version.stdout }}"
+      shell: "find {{ homebrew_root }}/Cellar/gcc -name 'stdc++.h' | grep {{ homebrew_check_gcc_version.stdout }}"
       register: homebrew_check_stdcpp_h_location
       changed_when: false
 
     - name: copy bits/stdc++.h
       copy:
         src: '{{ homebrew_check_stdcpp_h_location.stdout }}'
-        dest: /usr/local/include/bits/stdc++.h
+        dest: '{{ homebrew_root }}/include/bits/stdc++.h'
         mode: '0644'
 
     tags: homebrew-copy-bits
 
-  - block:
-    - name: check gtags (GNU global) for pygments
-      shell: gtags --debug 2> /dev/null
-      register: homebrew_check_gtags
-      failed_when: homebrew_check_gtags.rc != 0
-      changed_when: false
-    tags: homebrew-check-gtags
+  # - block:
+  #   - name: check gtags (GNU global) for pygments
+  #     shell: gtags --debug 2> /dev/null
+  #     register: homebrew_check_gtags
+  #     failed_when: homebrew_check_gtags.rc != 0
+  #     changed_when: false
+  #   tags: homebrew-check-gtags
 
   - block:
     - name: update brew list

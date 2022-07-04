@@ -1,4 +1,7 @@
 ---
+homebrew_root: /opt/homebrew
+#homebrew_root: /usr/local
+
 # vars file for homebrew
 homebrew_taps:
   # - homebrew/dupes
@@ -15,14 +18,16 @@ homebrew_my_packages: []
 
 homebrew_packages:
   - name: ansible
+  - name: fzf
   - name: fontforge
   - name: git
   - name: ghq
+  - name: go
   - name: hub
   - name: less
   - name: mas
   # - name: npm
-  - name: peco
+  # - name: peco
   # - name: python
   - name: python3
   - name: reattach-to-user-namespace
@@ -42,15 +47,13 @@ homebrew_other_packages:
   - name: dive
   - name: exiftool
   - name: ffmpeg
-  - name: fzf
   - name: flyway
   - name: gawk
   - name: gcc
-  - name: gdb
-  - { name: global, install_options: [ with-ctags, with-pygments ] }
+  # - name: gdb
+  # - { name: global, install_options: [ with-ctags, with-pygments ] }
   - name: gnu-time
-  - name: go
-  - name: google-cloud-sdk
+  # - name: google-cloud-sdk
   - name: gradle
   - name: grep
   - name: groovy
@@ -60,6 +63,7 @@ homebrew_other_packages:
   - name: jsonnet
   - name: jq
   - name: kotlin
+  - name: krew
   - name: kubernetes-cli
   - name: kubectx
   - { name: kubetail, install_options: [ with-short-names ] }
