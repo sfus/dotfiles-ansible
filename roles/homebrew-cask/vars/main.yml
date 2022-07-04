@@ -17,7 +17,7 @@ homebrew_cask_packages:
   # - name: mousepose
   # - name: 1password
 
-  - name: adoptopenjdk8
+  # - name: adoptopenjdk8
   - name: alfred
   - name: bartender
   - name: bettertouchtool
@@ -25,9 +25,9 @@ homebrew_cask_packages:
   # - name: dash
   - name: deepl
   - name: diskwave
-  - name: docker
+  # - name: docker
   - name: dropbox
-  - name: duet
+  # - name: duet
   - name: emacs
   - name: evernote
   - name: google-japanese-ime
