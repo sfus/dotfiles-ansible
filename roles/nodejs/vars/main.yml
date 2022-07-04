@@ -2,11 +2,10 @@
 # vars file for nodejs
 nodejs_nodenv_dir: ~/.nodenv
 nodejs_node_versions:
-  - 12.16.1
-  - 12.18.2
-  - 14.15.1
-nodejs_node_default_version: 14.15.1
-nodejs_npm_default_version: 8.5.4
+  - 14.19.3
+  - 16.14.2
+nodejs_node_default_version: 14.19.3
+nodejs_npm_default_version: 8.5.0
 
 nodejs_npm_packages:
   ## web development
