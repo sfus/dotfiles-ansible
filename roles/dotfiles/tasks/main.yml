@@ -17,6 +17,10 @@
       repo: https://github.com/erikw/tmux-powerline.git
       dest: ~/.tmux-powerline
 
+  - name: init vim
+    command: "{{ dotfiles_dir }}/vim/init_vim.sh"
+    changed_when: false
+
   - name: create symbolic links to dotfiles
     command: "{{ dotfiles_dir }}/create_symlink.sh"
     changed_when: false
