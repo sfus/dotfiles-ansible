@@ -14,6 +14,7 @@ packages:
   - { id: 443987910,  name: 1Password }
   - { id: 451732904,  name: App Language Chooser }
   # - { id: 961632517,  name: Be Focused Pro }
+  - { id: 1024917449, name: Cloud Outliner Pro }
   - { id: 1024640650, name: CotEditor }
   - { id: 412448059,  name: ForkLift }
   - { id: 668208984,  name: GIPHY Capture }
