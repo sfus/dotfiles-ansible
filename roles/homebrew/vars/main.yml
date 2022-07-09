@@ -18,11 +18,13 @@ homebrew_my_packages: []
 
 homebrew_packages:
   - name: ansible
+  - name: coreutils # to install realpath for tmux-powerline
   - name: fzf
   - name: fontforge
   - name: git
   - name: ghq
   - name: go
+  - name: grep
   - name: hub
   - name: less
   - name: mas

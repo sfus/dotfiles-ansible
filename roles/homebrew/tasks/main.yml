@@ -39,6 +39,14 @@
     tags: homebrew-install-others
 
   - block:
+    - name: symlink ggrep (GNU grep) to grep
+      file:
+        src: '{{ homebrew_root }}/bin/ggrep'
+        dest: '{{ homebrew_root }}/bin/grep'
+        state: link
+    tags: homebrew-symlink-grep
+
+  - block:
     - name: symlink gtime (GNU time) to time
       file:
         src: '{{ homebrew_root }}/bin/gtime'
