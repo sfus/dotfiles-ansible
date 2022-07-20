@@ -55,6 +55,14 @@
     tags: homebrew-symlink-gtime
 
   - block:
+    - name: symlink python3 to python
+      file:
+        src: '{{ homebrew_root }}/bin/python3'
+        dest: '{{ homebrew_root }}/bin/python'
+        state: link
+    tags: homebrew-symlink-python
+
+  - block:
     - name: check gcc version
       shell: "brew info gcc | head -1 | awk '{print $3}' | cut -d. -f1"
       register: homebrew_check_gcc_version
