@@ -69,6 +69,7 @@ homebrew_other_packages:
   - name: kubernetes-cli
   - name: kubectx
   - { name: kubetail, install_options: [ with-short-names ] }
+  - name: kubeseal
   - name: kustomize
   - name: kind
   - name: lua
