@@ -3,6 +3,6 @@
 sdkman_dir: ~/.sdkman
 sdkman_packages:
   - { command: java, id: 11.0.15-tem }
-  - { command: java, id: 17.0.3-tem }
+  - { command: java, id: 17.0.8-tem }
 sdkman_defaults:
-  - { command: java, id: 11.0.15-tem }
+  - { command: java, id: 17.0.8-tem }

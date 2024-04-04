@@ -52,16 +52,16 @@
     # $ sudo installer -pkg /Library/Developer/CommandLineTools/Packages/macOS_SDK_headers_for_macOS_10.14.pkg -target /
     # -> https://qiita.com/zreactor/items/c3fd04417e0d61af0afe
 
-  - block:
-    - name: check python2 version
-      shell: "{{ python_pyenv_dir}}/bin/pyenv versions | grep {{ python_python2_version }} > /dev/null; echo $?"
-      register: pyenv_check_install_v2
-      changed_when: pyenv_check_install_v2.stdout != '0'
-
-    - name: install python2
-      shell: "{{ python_pyenv_dir}}/bin/pyenv install -v {{ python_python2_version }}"
-      when: pyenv_check_install_v2.stdout != '0'
-    tags: python-install-python2
+#   - block:
+#     - name: check python2 version
+#       shell: "{{ python_pyenv_dir}}/bin/pyenv versions | grep {{ python_python2_version }} > /dev/null; echo $?"
+#       register: pyenv_check_install_v2
+#       changed_when: pyenv_check_install_v2.stdout != '0'
+#
+#     - name: install python2
+#       shell: "{{ python_pyenv_dir}}/bin/pyenv install -v {{ python_python2_version }}"
+#       when: pyenv_check_install_v2.stdout != '0'
+#     tags: python-install-python2
 
   - block:
     - name: pyenv rehash python3
@@ -74,7 +74,8 @@
       changed_when: pyenv_check_default.stdout != '0'
 
     - name: set pyenv global
-      shell: "{{ python_pyenv_dir}}/bin/pyenv global {{ python_python3_version }} {{ python_python2_version }}"
+      #shell: "{{ python_pyenv_dir}}/bin/pyenv global {{ python_python3_version }} {{ python_python2_version }}"
+      shell: "{{ python_pyenv_dir}}/bin/pyenv global {{ python_python3_version }}"
       when: pyenv_check_default.stdout != '0'
 
     tags: python-enable-python

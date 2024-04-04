@@ -3,7 +3,7 @@
 # $ pyenv install --list
 python_pyenv_dir: ~/.pyenv
 python_python3_version: 3.9.2
-python_python2_version: 2.7.15
+#python_python2_version: 2.7.15
 pip_packages:
   - name: Pygments
   - name: jedi
@@ -15,3 +15,4 @@ pip_packages:
   - name: online-judge-tools
   - name: requests
   - name: configparser
+  - name: pycryptodome
