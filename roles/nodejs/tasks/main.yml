@@ -1,52 +1,40 @@
 ---
-# tasks file for nodejs
-# https://github.com/riywo/ndenv
+# tasks file for nodejs using nvm
 - block:
 
   - block:
-    - name: check nodenv dir
+    - name: check nvm dir
       stat:
-        path: "{{ nodejs_nodenv_dir }}"
+        path: "{{ nodejs_nvm_dir }}"
       register: dir_stat
 
-    - name: install nodenv
+    - name: install nvm
       git:
-        repo: https://github.com/nodenv/nodenv.git
-        dest: "{{ nodejs_nodenv_dir }}"
+        repo: https://github.com/nvm-sh/nvm.git
+        dest: "{{ nodejs_nvm_dir }}"
       when: dir_stat.stat.isdir is not defined and not ansible_check_mode
 
-    - name: install node-build
-      git:
-        repo: https://github.com/nodenv/node-build.git
-        dest: "{{ nodejs_nodenv_dir }}/plugins/node-build"
-      when: dir_stat.stat.isdir is not defined and not ansible_check_mode
+    - name: source nvm script
+      shell: . "{{ nodejs_nvm_dir }}/nvm.sh"
+      args:
+        executable: /bin/bash
 
-    - name: install node
-      command: "{{ nodejs_nodenv_dir }}/bin/nodenv install {{ item }}"
-      register: nodejs_nodenv_node_result
-      changed_when: "'Installed node' in nodejs_nodenv_node_result.stderr"
-      failed_when: "nodejs_nodenv_node_result.rc != 0 and 'already exists' not in nodejs_nodenv_node_result.stderr"
+    - name: install node versions
+      shell: ". {{ nodejs_nvm_dir }}/nvm.sh && nvm install {{ item }}"
       with_items: '{{ nodejs_node_versions }}'
+      register: node_install_results
 
-    - name: set global
-      command: "{{ nodejs_nodenv_dir }}/bin/nodenv global {{ nodejs_node_default_version }}"
-      changed_when: false
+    - name: set default node version
+      shell: ". {{ nodejs_nvm_dir }}/nvm.sh && nvm alias default {{ nodejs_node_default_version }}"
 
-    - name: instal npm
-      npm:
-        name: "npm"
-        version: "{{ nodejs_npm_default_version }}"
-        executable: "{{ nodejs_nodenv_dir }}/shims/npm"
-        global: yes
+    - name: install npm globally
+      shell: ". {{ nodejs_nvm_dir }}/nvm.sh && npm install -g npm@{{ nodejs_npm_default_version }}"
 
-    tags: nodenv
+    tags: nvm
 
   - block:
-    - name: install npm -g
-      npm:
-        name: "{{ item.name }}"
-        executable: "{{ nodejs_nodenv_dir }}/shims/npm"
-        global: yes
+    - name: install global npm packages
+      shell: ". {{ nodejs_nvm_dir }}/nvm.sh && npm install -g {{ item.name }}"
       with_items: '{{ nodejs_npm_packages | default([]) }}'
 
     tags: npm
