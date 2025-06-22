@@ -8,7 +8,7 @@ homebrew_taps:
   # - homebrew/versions
   # - homebrew/boneyard
   # - homebrew/binary
-  - drone/drone
+  # - drone/drone
   - johanhaleby/kubetail
   # - sfus/customs
 
@@ -45,7 +45,7 @@ homebrew_other_packages:
   - name: bat
   - name: cmigemo
   - name: ctags
-  - name: drone@0.8.6
+  # - name: drone@0.8.6
   - name: dive
   - name: exiftool
   - name: ffmpeg
@@ -87,14 +87,14 @@ homebrew_other_packages:
   - name: plantuml
   - name: protobuf
   - name: redis
-  - name: rcmdnk/rcmdnkpac/parse-plist
+  # - name: rcmdnk/rcmdnkpac/parse-plist
   - name: ripgrep
   - name: source-highlight
   - name: sqlite
   - name: ssh-copy-id
   - name: stern
   - name: swig
-  - name: k1LoW/tap/tbls
+  # - name: k1LoW/tap/tbls
   - name: tcl-tk
   # - name: tmux-xpanes
   - name: ttyrec
