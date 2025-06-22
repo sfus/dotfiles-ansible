@@ -22,7 +22,7 @@ homebrew_cask_packages:
   - name: alfred
   - name: bartender
   - name: bettertouchtool
-  - name: bitbar
+  # - name: bitbar
   # - name: dash
   - name: deepl
   - name: diskwave
@@ -32,17 +32,17 @@ homebrew_cask_packages:
   - name: emacs
   - name: evernote
   - name: google-japanese-ime
-  - name: grammarly
+  # - name: grammarly
   # - name: insomniax
   # - name: intellij-idea
   - name: iterm2
-  - name: jasper
+  # - name: jasper
   - name: jetbrains-toolbox
   # - name: julia
   - name: karabiner-elements
   - name: keycastr
   - name: kindle
-  - name: kitematic
+  # - name: kitematic
   - name: logitech-options
   - name: macdown
   - name: macfuse
@@ -50,12 +50,12 @@ homebrew_cask_packages:
   - name: mysqlworkbench
   - name: onedrive
   # - name: osxfuse
-  - name: sequel-pro
+  # - name: sequel-pro
   - name: skim
   - name: skitch
-  - name: skype
+  # - name: skype
   - name: stay
-  - name: td-agent
+  # - name: td-agent
   - name: trailer
   - name: turbo-boost-switcher
   - name: vagrant
