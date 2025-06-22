@@ -64,7 +64,7 @@
 
   - block:
     - name: check gcc version
-      shell: "brew info gcc | head -1 | awk '{print $3}' | cut -d. -f1"
+      shell: "brew info gcc | head -1 | sed 's/^==> *//' | awk '{print $3}' | cut -d. -f1"
       register: homebrew_check_gcc_version
       changed_when: false
 
