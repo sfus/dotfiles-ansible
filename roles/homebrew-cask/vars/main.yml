@@ -1,9 +1,10 @@
 ---
 # vars file for homebrew-cask
 homebrew_cask_taps:
-  - homebrew/cask
-  - homebrew/cask-versions
-  - homebrew/cask-drivers
+  # - homebrew/cask
+  # - homebrew/cask-versions
+  # - homebrew/cask-drivers
+  - []
 
 homebrew_cask_packages:
   ## skip as already installed by administrator
@@ -25,7 +26,7 @@ homebrew_cask_packages:
   # - name: bitbar
   # - name: dash
   - name: deepl
-  - name: diskwave
+  # - name: diskwave
   # - name: docker
   - name: dropbox
   # - name: duet
@@ -41,7 +42,7 @@ homebrew_cask_packages:
   # - name: julia
   - name: karabiner-elements
   - name: keycastr
-  - name: kindle
+  # - name: kindle
   # - name: kitematic
   - name: logitech-options
   - name: macdown
@@ -52,12 +53,12 @@ homebrew_cask_packages:
   # - name: osxfuse
   # - name: sequel-pro
   - name: skim
-  - name: skitch
+  # - name: skitch
   # - name: skype
   - name: stay
   # - name: td-agent
-  - name: trailer
-  - name: turbo-boost-switcher
+  # - name: trailer
+  # - name: turbo-boost-switcher
   - name: vagrant
   # - name: virtualbox
   - name: visualvm
