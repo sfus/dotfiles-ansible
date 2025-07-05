@@ -5,15 +5,14 @@
 
   - name: Download migu1m
     get_url:
-      url: https://ja.osdn.net/frs/redir.php?m=jaist&f=mix-mplus-ipa%2F63545%2Fmigu-1m-20150712.zip
-      dest: ~/Downloads/migu-1m-20150712.zip
+      url: https://github.com/itouhiro/mixfont-mplus-ipa/releases/download/v2020.0307/migu-1m-20200307.zip
+      dest: ~/Downloads/migu-1m-20200307.zip
       force: true
 
   - name: Unzip migu1m
-    command: unzip -o migu-1m-20150712.zip
-    args:
-      chdir: ~/Downloads
-      warn: false
+    ansible.builtin.unarchive:
+      src: "~/Downloads/migu-1m-20200307.zip"
+      dest: "~/Downloads"
     changed_when: false
 
   - name: clone fontpatcher
@@ -27,7 +26,7 @@
       chdir: ~/Downloads/fontpatcher/scripts
     changed_when: false
     with_fileglob:
-      - ~/Downloads/migu-1m-20150712/*.ttf
+      - ~/Downloads/migu-1m-20200307/*.ttf
 
   - name: copy *.ttf to  ~/Library/Fonts/
     copy:
