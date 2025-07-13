@@ -10,8 +10,6 @@
 
   - name: install sdkman
     shell: "curl -s 'https://get.sdkman.io' | bash"
-    args:
-      warn: no
     when: dir_stat.stat.isdir is not defined and not ansible_check_mode
 
   - name: install sdkman items
