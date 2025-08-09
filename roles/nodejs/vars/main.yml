@@ -1,30 +1,30 @@
 ---
 # vars file for nodejs
-nodejs_nodenv_dir: ~/.nodenv
+nodejs_nodenv_dir: "{{ ansible_env.HOME }}/.nodenv"
 nodejs_node_versions:
-  - 22.14.0
+  - 22.18.0
 
-nodejs_nvm_dir: ~/.nvm
+nodejs_nvm_dir: "{{ ansible_env.HOME }}/.nvm"
 
-nodejs_node_default_version: 22.14.0
-nodejs_npm_default_version: 10.9.2
+nodejs_node_default_version: 22.18.0
+nodejs_npm_default_version: 11.5.2
 
 nodejs_npm_packages:
   ## web development
   - name: prettier
   - name: eslint
-  - name: node-gyp
-  - name: webpack
-  - name: webpack-cli
+  # - name: node-gyp
+  # - name: webpack
+  # - name: webpack-cli
   #- name: @google/clasp
 
   ## mobile development
-  - name: ionic
-  - name: cordova
+  # - name: ionic
+  # - name: cordova
   # - name: ios-deploy
 
   ## programming contest
-  - name: atcoder-cli
+  # - name: atcoder-cli
     # then execute `acc login` and `oj login https://atcoder.jp/` for acc/oj command
   # - name: skygragon/leetcode-cli
-  - name: leetcode-tools/leetcode-cli
+  # - name: leetcode-tools/leetcode-cli
