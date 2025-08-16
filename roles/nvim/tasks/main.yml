@@ -1,0 +1,60 @@
+---
+# tasks file for nvim
+- block:
+  - block:
+
+    - name: Download Neovim release tarball
+      ansible.builtin.get_url:
+        url: "https://github.com/neovim/neovim/releases/download/v{{ nvim_version }}/nvim-macos-arm64.tar.gz"
+        dest: "{{ nvim_tar }}"
+        mode: "0644"
+
+    - name: Extract Neovim archive with tar
+      ansible.builtin.command:
+        cmd: tar -xzf "{{ nvim_tar }}" -C /tmp/
+      args:
+        creates: "{{ nvim_src_dir }}"
+
+    - name: Ensure install dir exists
+      ansible.builtin.file:
+        path: "{{ install_dir }}"
+        state: directory
+        mode: "0755"
+      become: "{{ install_scope == 'system' }}"
+
+    - name: Copy entire Neovim tree (bin/share/lib) into install dir
+      ansible.builtin.copy:
+        src: "{{ nvim_src_dir }}/"
+        dest: "{{ install_dir }}/"
+        remote_src: true
+        mode: preserve
+      become: "{{ install_scope == 'system' }}"
+
+    - name: Ensure link directory exists
+      ansible.builtin.file:
+        path: "{{ (install_scope == 'user') | ternary(user_bin, system_bin) }}"
+        state: directory
+        mode: "0755"
+      become: "{{ install_scope == 'system' }}"
+
+    - name: Symlink nvim to PATH location
+      ansible.builtin.file:
+        src: "{{ install_dir }}/bin/nvim"
+        dest: "{{ link_dest }}"
+        state: link
+        force: true
+      become: "{{ install_scope == 'system' }}"
+
+    - name: Verify Neovim
+      ansible.builtin.command: "{{ link_dest }} --version"
+      register: nvim_version_check
+
+    - name: Show Neovim version
+      ansible.builtin.debug:
+        msg: "{{ nvim_version_check.stdout }}"
+
+    tags:
+      - nvim-init
+
+  tags:
+    - nvim

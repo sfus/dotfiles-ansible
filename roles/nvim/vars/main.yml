@@ -1,0 +1,14 @@
+---
+# vars file for nvim
+nvim_version: "0.11.3"
+install_scope: "system" # "user" or "system"
+user_prefix: "{{ lookup('env','HOME') + '/.local' }}"
+system_prefix: "/opt"
+user_bin: "{{ lookup('env','HOME') + '/.local/bin' }}"
+system_bin: "/usr/local/bin"
+
+nvim_tar: "/tmp/nvim-macos-arm64.tar.gz"
+nvim_src_dir: "/tmp/nvim-macos-arm64"
+install_prefix: "{{ (install_scope == 'user') | ternary(user_prefix, system_prefix) }}"
+install_dir: "{{ install_prefix + '/nvim-' + nvim_version }}"
+link_dest: "{{ (install_scope == 'user') | ternary(user_bin + '/nvim', system_bin + '/nvim') }}"
