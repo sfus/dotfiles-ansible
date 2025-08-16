@@ -13,3 +13,4 @@
     - role: ruby
     - role: java
     - role: emacs
+    - role: nvim
