@@ -10,6 +10,8 @@ homebrew_taps:
   # - homebrew/binary
   # - drone/drone
   - johanhaleby/kubetail
+  - laishulu/homebrew # for macism
+  - daipeihust/tap # for im-select
   # - sfus/customs
 
 homebrew_my_packages: []
@@ -19,6 +21,7 @@ homebrew_my_packages: []
 homebrew_packages:
   - name: ansible
   - name: coreutils # to install realpath for tmux-powerline
+  - name: fd
   - name: fzf
   - name: fontforge
   - name: git
@@ -33,6 +36,7 @@ homebrew_packages:
   # - name: python
   - name: python3
   - name: reattach-to-user-namespace
+  - name: ripgrep
   - name: the_silver_searcher
   - name: tig
   - name: tmux
@@ -62,6 +66,7 @@ homebrew_other_packages:
   - name: htop
   - name: hugo
   - name: imagemagick
+  - name: im-select
   - name: jsonnet
   - name: jq
   - name: kotlin
@@ -76,6 +81,7 @@ homebrew_other_packages:
   - name: lazydocker
   - name: lesspipe
   - name: libsecret
+  - name: macism
   - name: maven
   - name: mecab
   - name: mecab-ipadic
