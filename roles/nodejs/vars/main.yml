@@ -28,3 +28,4 @@ nodejs_npm_packages:
     # then execute `acc login` and `oj login https://atcoder.jp/` for acc/oj command
   # - name: skygragon/leetcode-cli
   # - name: leetcode-tools/leetcode-cli
+  - name: "@anthropic-ai/claude-code"
