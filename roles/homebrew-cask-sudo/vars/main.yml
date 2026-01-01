@@ -1,0 +1,21 @@
+---
+# vars file for homebrew-cask
+homebrew_cask_taps:
+  # - homebrew/cask
+  # - homebrew/cask-versions
+  # - homebrew/cask-drivers
+  - []
+
+homebrew_cask_sudo_packages:
+  - name: google-japanese-ime
+  - name: karabiner-elements
+  - name: macfuse
+  # - name: adobe-acrobat-reader
+  # - name: logitech-options
+  # - name: vagrant
+  # - name: xquartz
+
+homebrew_after_cask_sudo_packages:
+  - name: fuse-zip
+  - name: sshfs
+  - name: curlftpfs # depends on cask/xquartz
