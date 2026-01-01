@@ -82,6 +82,7 @@ homebrew_other_packages:
   - name: lesspipe
   - name: libsecret
   - name: macism
+  - name: markdownlint-cli
   - name: maven
   - name: mecab
   - name: mecab-ipadic
