@@ -19,7 +19,6 @@ homebrew_cask_packages:
   # - name: 1password
 
   # - name: adoptopenjdk8
-  - name: adobe-acrobat-reader
   - name: alfred
   - name: bartender
   - name: bettertouchtool
@@ -32,7 +31,6 @@ homebrew_cask_packages:
   # - name: duet
   - name: emacs
   - name: evernote
-  - name: google-japanese-ime
   # - name: grammarly
   # - name: insomniax
   # - name: intellij-idea
@@ -40,13 +38,10 @@ homebrew_cask_packages:
   # - name: jasper
   - name: jetbrains-toolbox
   # - name: julia
-  - name: karabiner-elements
   - name: keycastr
   # - name: kindle
   # - name: kitematic
-  - name: logitech-options
   - name: macdown
-  - name: macfuse
   - name: mat
   - name: mysqlworkbench
   - name: onedrive
@@ -59,15 +54,8 @@ homebrew_cask_packages:
   # - name: td-agent
   # - name: trailer
   # - name: turbo-boost-switcher
-  - name: vagrant
   # - name: virtualbox
   - name: visualvm
   - name: visual-studio-code
   - name: vlc
-  - name: xquartz
   - name: zeplin
-
-homebrew_after_cask_packages:
-  - name: fuse-zip
-  - name: sshfs
-  - name: curlftpfs # depends on cask/xquartz

@@ -1,0 +1,60 @@
+---
+- block:
+  - block:
+    - name: Ensure brew exists
+      ansible.builtin.command: brew --version
+      register: brew_version
+      changed_when: false
+
+    - name: Update brew (optional but recommended)
+      ansible.builtin.command: brew update
+      changed_when: false
+
+    # --- CASKS (may prompt for password; keep interactive TTY) ---
+    - name: List installed casks
+      ansible.builtin.command: brew list --cask
+      register: installed_casks
+      changed_when: false
+
+    - name: Install casks (PTY via script; allows sudo password prompt)
+      become: false
+      ansible.builtin.command:
+        argv:
+          - script
+          - -q
+          - /dev/null
+          - brew
+          - install
+          - --cask
+          - "{{ item.name }}"
+      loop: "{{ homebrew_cask_sudo_packages }}"
+      when: item.name not in installed_casks.stdout_lines
+
+    tags:
+      - homebrew-cask-sudo-main
+
+  - block:
+    # --- FORMULAS (after casks) ---
+    - name: List installed formulas
+      ansible.builtin.command: brew list --formula
+      register: installed_formulas
+      changed_when: false
+
+    - name: Install formulas
+      ansible.builtin.command:
+        argv:
+          - script
+          - -q
+          - /dev/null
+          - brew
+          - install
+          - --cask
+          - "{{ item.name }}"
+      loop: "{{ homebrew_cask_sudo_packages }}"
+      when: item.name not in installed_formulas.stdout_lines
+
+    tags:
+      - homebrew-cask-sudo-after
+
+  tags:
+    - homebrew-cask-sudo
