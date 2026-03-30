@@ -18,7 +18,7 @@
   - name: clone tmux-powerline
     git:
       repo: https://github.com/erikw/tmux-powerline.git
-      dest: ~/.tmux-powerline
+      dest: ~/.config/tmux-powerline
 
   - name: init vim
     command: "{{ dotfiles_dir }}/vim/init_vim.sh"
