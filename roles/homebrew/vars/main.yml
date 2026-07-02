@@ -39,6 +39,7 @@ homebrew_packages:
   - name: ripgrep
   - name: the_silver_searcher
   - name: tig
+  - name: tree-sitter-cli
   - name: tmux
   - name: vifm
   - name: wget
