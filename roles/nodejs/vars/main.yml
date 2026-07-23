@@ -9,4 +9,3 @@ nodejs_global_packages:
   - name: pnpm
   - name: prettier
   - name: eslint
-  - name: "@anthropic-ai/claude-code"

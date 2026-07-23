@@ -2,19 +2,10 @@
 # vars file for mas
 
 packages:
-  # - { id: 497799835,  name: Xcode }
-  # - { id: 409201541,  name: Pages }
-  # - { id: 409203825,  name: Numbers }
-  # - { id: 409183694,  name: Keynote }
-  # - { id: 823766827,  name: OneDrive }
-  # - { id: 510934532,  name: FreeMan }
-  # - { id: 803453959,  name: Slack }
-  # - { id: 974971992,  name: Alternote }
-
+  - { id: 803453959,  name: Slack }
   - { id: 937984704,  name: Amphetamine }
   - { id: 451732904,  name: App Language Chooser }
-  # - { id: 961632517,  name: Be Focused Pro }
-  # - { id: 1024640650, name: CotEditor }
+  - { id: 1024640650, name: CotEditor }
   - { id: 412448059,  name: ForkLift }
   - { id: 668208984,  name: GIPHY Capture }
   # - { id: 1142151959, name: JustFocus }
@@ -22,7 +13,6 @@ packages:
   - { id: 539883307,  name: LINE }
   # - { id: 576338668,  name: Leaf }
   - { id: 411213048,  name: LadioCast }
-  # - { id: 1063631769, name: Medis }
   - { id: 1532419400, name: MeetingBar }
   - { id: 714196447,  name: MenuBar Stats }
   - { id: 405904955,  name: Mousepose }
