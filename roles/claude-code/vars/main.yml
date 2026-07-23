@@ -1,0 +1,4 @@
+---
+# vars file for claude-code
+claude_code_bin: "{{ ansible_env.HOME }}/.local/bin/claude"
+claude_code_install_url: "https://claude.ai/install.sh"

@@ -1,0 +1,17 @@
+---
+# tasks file for claude-code
+# Claude Code CLI installer (https://code.claude.com/docs/ja/quickstart)
+# NOTE: marketplaces / plugins are declared in ~/.claude/settings.json
+# (managed by the separate dot-claude repo) and auto-installed by Claude
+# Code on startup, so they are intentionally out of scope for this role.
+- block:
+  - name: check claude cli
+    ansible.builtin.stat:
+      path: "{{ claude_code_bin }}"
+    register: claude_bin_stat
+
+  - name: install claude code
+    ansible.builtin.shell: "curl -fsSL {{ claude_code_install_url }} | bash"
+    when: not claude_bin_stat.stat.exists and not ansible_check_mode
+
+  tags: claude-code

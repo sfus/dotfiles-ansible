@@ -9,6 +9,7 @@
     - role: fonts
     - role: python
     - role: nodejs
+    - role: claude-code
     - role: java
     - role: emacs
     - role: nvim
