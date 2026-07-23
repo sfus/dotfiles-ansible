@@ -1,0 +1,8 @@
+---
+# vars file for herdr
+# herdr binary itself is provided by the homebrew role (homebrew_other_packages).
+herdr_bin: /opt/homebrew/bin/herdr
+
+# Herdr plugins to install (owner/repo[/subdir])
+herdr_plugins:
+  - iurysza/termscope

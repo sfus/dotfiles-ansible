@@ -10,6 +10,7 @@
     - role: python
     - role: nodejs
     - role: claude-code
+    - role: herdr
     - role: java
     - role: emacs
     - role: nvim

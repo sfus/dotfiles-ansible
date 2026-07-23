@@ -1,0 +1,22 @@
+---
+# tasks file for herdr
+# NOTE: the herdr binary is installed by the homebrew role
+# (homebrew_other_packages). This role only installs herdr plugins,
+# e.g. termscope (https://github.com/iurysza/termscope).
+- block:
+  - name: get installed herdr plugins
+    ansible.builtin.command: "{{ herdr_bin }} plugin list"
+    register: herdr_plugin_list
+    changed_when: false
+    check_mode: no
+
+  - name: install herdr plugins
+    ansible.builtin.command: "{{ herdr_bin }} plugin install {{ item }} --yes"
+    loop: "{{ herdr_plugins | default([]) }}"
+    loop_control:
+      label: "{{ item }}"
+    when: (item | basename) not in herdr_plugin_list.stdout
+    register: herdr_plugin_install
+    changed_when: "'installed' in (herdr_plugin_install.stdout | default('')) | lower"
+
+  tags: herdr
