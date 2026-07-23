@@ -9,8 +9,12 @@
 # Xcode license accept
 # $ sudo xcodebuild -license accept
 
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 brew doctor
-brew install python
+brew install python@3.14
 brew install ansible
+
+# Ansible modules for Homebrew (homebrew / homebrew_tap / homebrew_cask)
+# were moved out of ansible-core into the community.general collection.
+ansible-galaxy collection install -r requirements.yml

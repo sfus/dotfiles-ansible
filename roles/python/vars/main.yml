@@ -1,19 +1,4 @@
 ---
 # vars file for python
-# $ pyenv install --list
-python_pyenv_dir: ~/.pyenv
-python_python3_version: 3.13.7
-#python_python2_version: 2.7.15
-pip_packages:
-  - name: Pygments
-  - name: jedi
-  - name: pylint
-  - name: epc
-  - name: scipy
-  - name: gensim
-  - name: mecab-python3
-  - name: online-judge-tools
-  - name: requests
-  - name: configparser
-  - name: pycryptodome
-  - name: python-openstackclient
+python_version: "3.14"
+python_homebrew_root: /opt/homebrew

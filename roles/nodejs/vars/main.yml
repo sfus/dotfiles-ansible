@@ -1,31 +1,12 @@
 ---
 # vars file for nodejs
-nodejs_nodenv_dir: "{{ ansible_env.HOME }}/.nodenv"
-nodejs_node_versions:
-  - 22.18.0
+nodejs_volta_dir: "{{ ansible_env.HOME }}/.volta"
 
-nodejs_nvm_dir: "{{ ansible_env.HOME }}/.nvm"
+# Pin the major version only; Volta tracks the latest patch on install.
+nodejs_node_version: "24"
 
-nodejs_node_default_version: 22.18.0
-nodejs_npm_default_version: 11.5.2
-
-nodejs_npm_packages:
-  ## web development
+nodejs_global_packages:
+  - name: pnpm
   - name: prettier
   - name: eslint
-  # - name: node-gyp
-  # - name: webpack
-  # - name: webpack-cli
-  #- name: @google/clasp
-
-  ## mobile development
-  # - name: ionic
-  # - name: cordova
-  # - name: ios-deploy
-
-  ## programming contest
-  # - name: atcoder-cli
-    # then execute `acc login` and `oj login https://atcoder.jp/` for acc/oj command
-  # - name: skygragon/leetcode-cli
-  # - name: leetcode-tools/leetcode-cli
   - name: "@anthropic-ai/claude-code"

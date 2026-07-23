@@ -4,7 +4,8 @@ homebrew_cask_taps:
   # - homebrew/cask
   # - homebrew/cask-versions
   # - homebrew/cask-drivers
-  - []
+  - arto-app/tap # for arto
+  - detachhead/tap # for rebased
 
 homebrew_cask_packages:
   ## skip as already installed by administrator
@@ -29,7 +30,7 @@ homebrew_cask_packages:
   # - name: docker
   - name: dropbox
   # - name: duet
-  - name: emacs
+  - name: emacs-app
   - name: evernote
   # - name: grammarly
   # - name: insomniax
@@ -42,9 +43,8 @@ homebrew_cask_packages:
   # - name: kindle
   # - name: kitematic
   - name: macdown
-  - name: mat
+  - name: memoryanalyzer
   - name: mysqlworkbench
-  - name: onedrive
   # - name: osxfuse
   # - name: sequel-pro
   - name: skim
@@ -55,7 +55,13 @@ homebrew_cask_packages:
   # - name: trailer
   # - name: turbo-boost-switcher
   # - name: virtualbox
-  - name: visualvm
   - name: visual-studio-code
-  - name: vlc
-  - name: zeplin
+
+  ## added to match `brew list --cask`
+  - name: ghostty
+  - name: slack
+  - name: xbar
+  - name: font-plemol-jp
+  - name: arto # arto-app/tap
+  - name: rebased # detachhead/tap
+  - name: codex

@@ -1,9 +1,0 @@
----
-# vars file for ruby
-ruby_rbenv_dir: ~/.rbenv
-ruby_version: 3.2.2
-ruby_gems:
-  - name: fluent-plugin-kubernetes_metadata_filter
-  - name: fluent-plugin-prometheus
-  - name: fluent-plugin-rewrite-tag-filter
-  - name: fluent-plugin-parser-cri

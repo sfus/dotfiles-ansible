@@ -12,6 +12,9 @@ homebrew_taps:
   - johanhaleby/kubetail
   - laishulu/homebrew # for macism
   - daipeihust/tap # for im-select
+  - greymd/tools # for tmux-xpanes
+  - kbrdn1/tap # for gwm
+  - ory/tap # for ory cli
   # - sfus/customs
 
 homebrew_my_packages: []
@@ -33,8 +36,7 @@ homebrew_packages:
   - name: mas
   # - name: npm
   # - name: peco
-  # - name: python
-  - name: python3
+  # python is installed and symlinked by the python role
   - name: reattach-to-user-namespace
   - name: ripgrep
   - name: the_silver_searcher
@@ -104,10 +106,31 @@ homebrew_other_packages:
   - name: swig
   # - name: k1LoW/tap/tbls
   - name: tcl-tk
-  # - name: tmux-xpanes
+  - name: tmux-xpanes
   - name: ttyrec
   # - name: utf8proc
   - name: translate-shell
   - name: w3m
   - name: yq
   - name: zlib
+
+  ## added to match `brew leaves`
+  - name: docker
+  - name: docker-compose
+  - name: emacs
+  - name: flock
+  - name: fswatch
+  - name: gemini-cli
+  - name: gh
+  - name: git-delta
+  - name: glow
+  - name: herdr
+  - name: hunk
+  - name: mdcat
+  - name: neovim
+  - name: postgresql@18
+  - name: pre-commit
+  - name: terraform
+  - name: tfenv
+  - name: kbrdn1/tap/gwm
+  - name: ory/tap/cli

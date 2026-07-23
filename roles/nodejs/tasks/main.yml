@@ -1,42 +1,31 @@
 ---
-# tasks file for nodejs using nvm
+# tasks file for nodejs using Volta
 - block:
 
   - block:
-    - name: check nvm dir
-      stat:
-        path: "{{ nodejs_nvm_dir }}"
-      register: dir_stat
+    - name: check volta
+      ansible.builtin.stat:
+        path: "{{ nodejs_volta_dir }}"
+      register: volta_dir_stat
 
-    - name: install nvm
-      git:
-        repo: https://github.com/nvm-sh/nvm.git
-        dest: "{{ nodejs_nvm_dir }}"
-      when: dir_stat.stat.isdir is not defined and not ansible_check_mode
+    - name: install volta
+      ansible.builtin.shell: "curl https://get.volta.sh | bash"
+      when: volta_dir_stat.stat.isdir is not defined and not ansible_check_mode
 
-    - name: source nvm script
-      shell: . "{{ nodejs_nvm_dir }}/nvm.sh"
-      args:
-        executable: /bin/bash
+    - name: install and set default node
+      ansible.builtin.command: "{{ nodejs_volta_dir }}/bin/volta install node@{{ nodejs_node_version }}"
+      register: volta_node_install
+      changed_when: "'was set as default' in volta_node_install.stderr or 'installed and set' in volta_node_install.stderr"
 
-    - name: install node versions
-      shell: ". {{ nodejs_nvm_dir }}/nvm.sh && nvm install {{ item }}"
-      with_items: '{{ nodejs_node_versions }}'
-      register: node_install_results
-
-    - name: set default node version
-      shell: ". {{ nodejs_nvm_dir }}/nvm.sh && nvm alias default {{ nodejs_node_default_version }}"
-
-    - name: install npm globally
-      shell: ". {{ nodejs_nvm_dir }}/nvm.sh && npm install -g npm@{{ nodejs_npm_default_version }}"
-
-    tags: nvm
+    tags: volta
 
   - block:
-    - name: install global npm packages
-      shell: ". {{ nodejs_nvm_dir }}/nvm.sh && npm install -g {{ item.name }}"
-      with_items: '{{ nodejs_npm_packages | default([]) }}'
+    - name: install global node packages via volta
+      ansible.builtin.command: "{{ nodejs_volta_dir }}/bin/volta install {{ item.name }}"
+      with_items: '{{ nodejs_global_packages | default([]) }}'
+      register: volta_global_install
+      changed_when: "'installed' in volta_global_install.stderr"
 
-    tags: npm
+    tags: node-global
 
   tags: nodejs

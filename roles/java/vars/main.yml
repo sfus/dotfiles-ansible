@@ -2,7 +2,6 @@
 # vars file for java
 sdkman_dir: "{{ ansible_env.HOME }}/.sdkman"
 sdkman_packages:
-  - { command: java, id: 11.0.15-tem }
-  - { command: java, id: 17.0.8-tem }
+  - { command: java, id: 21.0.11-tem }
 sdkman_defaults:
-  - { command: java, id: 17.0.8-tem }
+  - { command: java, id: 21.0.11-tem }
