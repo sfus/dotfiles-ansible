@@ -10,6 +10,16 @@
         state: present
       with_items: '{{ homebrew_cask_taps | default([]) }}'
 
+    - name: read current homebrew trust entries
+      ansible.builtin.command: brew trust --json v1
+      register: homebrew_cask_trust_current
+      changed_when: false
+
+    - name: trust non-official tap casks
+      ansible.builtin.command: 'brew trust --cask {{ item }}'
+      with_items: '{{ homebrew_cask_trusted_casks | default([]) }}'
+      when: item not in (homebrew_cask_trust_current.stdout | from_json).casks
+
     - name: install homebrew cask packages
       community.general.homebrew_cask:
         name: "{{ item.name }}"

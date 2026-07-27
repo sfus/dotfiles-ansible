@@ -14,6 +14,22 @@
     tags: homebrew-update-and-tap
 
   - block:
+    - name: read current homebrew trust entries
+      ansible.builtin.command: brew trust --json v1
+      register: homebrew_trust_current
+      changed_when: false
+
+    - name: trust non-official tap formulae
+      ansible.builtin.command: 'brew trust --formula {{ item }}'
+      with_items: '{{ homebrew_trusted_formulae | default([]) }}'
+      when: item not in (homebrew_trust_current.stdout | from_json).formulae
+    tags:
+      - homebrew-trust
+      - homebrew-install-mine
+      - homebrew-install
+      - homebrew-install-others
+
+  - block:
     - name: install homebrew my packages
       community.general.homebrew:
         name: '{{ item.name }}'

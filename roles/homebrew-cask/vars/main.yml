@@ -7,6 +7,11 @@ homebrew_cask_taps:
   - arto-app/tap # for arto
   - detachhead/tap # for rebased
 
+# See homebrew_trusted_formulae in roles/homebrew/vars/main.yml for the rationale.
+homebrew_cask_trusted_casks:
+  - arto-app/tap/arto
+  - detachhead/tap/rebased
+
 homebrew_cask_packages:
   ## skip as already installed by administrator
   # - name: google-chrome

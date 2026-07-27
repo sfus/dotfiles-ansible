@@ -9,13 +9,22 @@ homebrew_taps:
   # - homebrew/boneyard
   # - homebrew/binary
   # - drone/drone
-  - johanhaleby/kubetail
   - laishulu/homebrew # for macism
   - daipeihust/tap # for im-select
-  - greymd/tools # for tmux-xpanes
   - kbrdn1/tap # for gwm
   - ory/tap # for ory cli
   # - sfus/customs
+
+# Homebrew 6 refuses to load formulae from non-official taps until they are
+# trusted. Trust individual formulae rather than whole taps: whole-tap trust
+# also covers every formula the tap adds in the future.
+# Names must be fully qualified (<user>/<tap>/<formula>) as stored in trust.json.
+homebrew_trusted_formulae:
+  - daipeihust/tap/im-select
+  - delphinus/sfmono-square/sfmono-square # tap is not managed here; trusted to silence the warning
+  - kbrdn1/tap/gwm
+  - laishulu/homebrew/macism
+  - ory/tap/cli
 
 homebrew_my_packages: []
   # - name: sfus/customs/utf8proc
