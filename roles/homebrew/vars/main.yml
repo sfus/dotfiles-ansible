@@ -130,7 +130,11 @@ homebrew_other_packages:
   - name: neovim
   - name: postgresql@18
   - name: pre-commit
+  - name: pytest
   - name: terraform
   - name: tfenv
+  # Python itself is managed by the python role (brew python@3.14); uv is here
+  # only as a package/tool runner, not as a Python installer.
+  - name: uv
   - name: kbrdn1/tap/gwm
   - name: ory/tap/cli
