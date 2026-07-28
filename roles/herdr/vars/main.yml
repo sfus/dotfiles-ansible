@@ -6,3 +6,7 @@ herdr_bin: /opt/homebrew/bin/herdr
 # Herdr plugins to install (owner/repo[/subdir])
 herdr_plugins:
   - iurysza/termscope
+  # Renders a real Chromium inside a herdr pane and exposes it over CDP.
+  # Requires bun (homebrew role) and `[experimental] kitty_graphics = true`
+  # in the herdr config, which is managed outside this repository.
+  - ogulcancelik/herdr-browser

@@ -59,6 +59,8 @@ homebrew_packages:
 homebrew_other_packages:
   - name: aspell
   - name: bat
+  # Runtime required by the herdr-browser plugin (see roles/herdr/vars/main.yml).
+  - name: bun
   - name: cmigemo
   - name: ctags
   # - name: drone@0.8.6
