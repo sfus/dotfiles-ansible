@@ -13,6 +13,37 @@
       command: "{{ emacs_dir }}/create_symlink.sh"
       changed_when: false
 
+    # gnutls trusts only the files in `gnutls-trustfiles' and never the macOS
+    # keychain, so package downloads fail on a network that terminates TLS
+    # with its own CA.  Export the keychain roots here and let
+    # init-private.el add this bundle to `gnutls-trustfiles'.
+    # Must run before init.sh, which downloads packages from the archives.
+    - name: create certs directory for extra TLS trust anchors
+      ansible.builtin.file:
+        path: "{{ emacs_dir }}/certs"
+        state: directory
+        mode: '0755'
+      tags:
+        - emacs-certs
+
+    - name: read root CAs from the system keychain
+      ansible.builtin.command: >
+        security find-certificate -a -p
+        /Library/Keychains/System.keychain
+      register: emacs_system_keychain_cas
+      changed_when: false
+      check_mode: false
+      tags:
+        - emacs-certs
+
+    - name: write CA bundle for gnutls
+      ansible.builtin.copy:
+        content: "{{ emacs_system_keychain_cas.stdout }}\n"
+        dest: "{{ emacs_dir }}/certs/system-keychain.pem"
+        mode: '0644'
+      tags:
+        - emacs-certs
+
     - name: run init script to download packages
       command: "{{ emacs_dir }}/init.sh"
       changed_when: false
