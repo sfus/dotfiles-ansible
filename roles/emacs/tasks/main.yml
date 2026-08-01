@@ -15,8 +15,8 @@
 
     # gnutls trusts only the files in `gnutls-trustfiles' and never the macOS
     # keychain, so package downloads fail on a network that terminates TLS
-    # with its own CA.  Export the keychain roots here and let
-    # init-private.el add this bundle to `gnutls-trustfiles'.
+    # with its own CA.  Export the keychain roots here; init.el in emacs.d
+    # adds every certs/*.pem to `gnutls-trustfiles' at startup.
     # Must run before init.sh, which downloads packages from the archives.
     - name: create certs directory for extra TLS trust anchors
       ansible.builtin.file:
