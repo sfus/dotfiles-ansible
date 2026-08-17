@@ -73,6 +73,8 @@ homebrew_other_packages:
   # - name: gdb
   # - { name: global, install_options: [ with-ctags, with-pygments ] }
   - name: gnu-time
+  # Used for signing git commits and tags.
+  - name: gnupg
   # - name: google-cloud-sdk
   - name: gradle
   - name: grep
@@ -104,6 +106,8 @@ homebrew_other_packages:
   - name: ninja
   - name: nkf
   - name: openssl
+  # macOS GUI passphrase prompt for gnupg (needs gpg-agent.conf to take effect).
+  - name: pinentry-mac
   - name: pngpaste
   - name: plantuml
   - name: protobuf
