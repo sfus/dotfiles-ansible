@@ -38,6 +38,7 @@ homebrew_cask_packages:
   - name: emacs-app
   - name: evernote
   # - name: grammarly
+  - name: hammerspoon
   # - name: insomniax
   # - name: intellij-idea
   - name: iterm2
