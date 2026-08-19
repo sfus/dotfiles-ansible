@@ -18,6 +18,7 @@
       ansible.builtin.command: brew trust --json v1
       register: homebrew_trust_current
       changed_when: false
+      check_mode: false
 
     - name: trust non-official tap formulae
       ansible.builtin.command: 'brew trust --formula {{ item }}'
